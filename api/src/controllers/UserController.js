@@ -13,13 +13,9 @@ module.exports = {
     async show(req, res) {
         const { id } = req.params
 
-        try{
-            const result = await knex('pessoa').where('id_pes', id)
+        const result = await knex('pessoa').where('id_pes', id)
 
-            return res.json(result)
-        } catch(err) {
-            console.error(err);
-          }
+        return res.json(result)
             
         
     }
