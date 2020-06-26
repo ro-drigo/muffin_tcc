@@ -3,6 +3,10 @@ const routes = express.Router()
 
 const UserController = require('./controllers/UserController')
 
+//listar todos os usuários
 routes.get('/users', UserController.index)
+
+//listar apenas um usuário
+routes.get('/users/:id', UserController.show)
 
 module.exports = routes
