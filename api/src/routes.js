@@ -9,4 +9,7 @@ routes.get('/users', UserController.index)
 //listar apenas um usuário
 routes.get('/users/:id', UserController.show)
 
+//cadastrar usuário
+routes.post('/users', UserController.create)
+
 module.exports = routes
