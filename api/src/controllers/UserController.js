@@ -30,7 +30,7 @@ module.exports = {
     },
 
     //cadastrar um usuário
-    async create(req, res) {
+    async create(req, res, next) {
         try{
             const { 
                 nome,
@@ -58,11 +58,12 @@ module.exports = {
                     id_uf: estado
                 }
             )
+            
 
             //registrando o endereço
             const regist_endereco = await knex('endereco').insert(
                 { 
-                    id_cep: cep,
+                    cep_end: cep,
                     lograd_end: rua, 
                     bairro_end: bairro, 
                     id_city: knex('cidade').max('id_city')
@@ -75,8 +76,8 @@ module.exports = {
                     cpf_pes: cpf, 
                     nome_pes: nome, 
                     date_nasc: datanasc, 
+                    id_end: knex('endereco').max('id_end'),
                     sal_pes: sal, 
-                    id_cep: cep,
                     comp_pes: complemento,
                     num_pes: numero,
                     cel_pes: celular,
@@ -93,4 +94,3 @@ module.exports = {
         }
     }
  }
-
