@@ -1,6 +1,18 @@
 //importando o knex para usar
 const knex = require('../database')
-const { update } = require('../database')
+
+//função para verificar se a cidade que está cadastrando já existe
+verificaCidade = async (cidade) => {
+    const select = await knex('cidade').where('nome_city', cidade).select('id_city')
+    
+    if(select.length == 0){
+        //verdadeiro para cadastrar
+        return true
+    }else{
+        //caso já exista
+        return select
+    }
+}
 
 module.exports = {
     //listar todos usuários
@@ -53,13 +65,18 @@ module.exports = {
             } = req.body
 
             //registrando a cidade
-            const regist_cidade = await knex('cidade').insert(
-                { 
-                    nome_city: cidade,
-                    id_uf: estado
-                }
-            )
-            
+            let vcidade = await verificaCidade(cidade) //se true temos que cadastrar
+
+            if(vcidade == true){
+                const regist_cidade = await knex('cidade').insert(
+                    { 
+                        nome_city: cidade,
+                        id_uf: estado
+                    }
+                )
+                
+                vcidade = await verificaCidade(cidade)
+            }
 
             //registrando o endereço
             const regist_endereco = await knex('endereco').insert(
