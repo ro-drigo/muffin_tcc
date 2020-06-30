@@ -13,6 +13,9 @@ routes.get('/users/:id', UserController.show)
 //cadastrar usuário
 routes.post('/users', UserController.create)
 
+//editar usuário
+routes.put('/users/:id', UserController.update)
+
 //deletar usuário
 routes.delete('/users/:id', UserController.delete)
 

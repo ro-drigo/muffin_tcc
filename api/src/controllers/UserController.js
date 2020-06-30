@@ -1,5 +1,6 @@
 //importando o knex para usar
 const knex = require('../database')
+const { update } = require('../database')
 
 module.exports = {
     //listar todos usuários
@@ -94,6 +95,41 @@ module.exports = {
         }
     },
 
+    //editar um usuário
+    async update(req, res, next) {
+        try {
+            const { 
+                nome,
+                cpf,
+                celular,
+                email,
+                datanasc,
+                telefone,
+                sal,
+                senha
+
+            } = req.body
+
+            const { id } = req.params
+
+            await knex('pessoa').update
+                ({ 
+                    nome_pes: nome,
+                    cpf_pes: cpf,
+                    date_nasc: datanasc,
+                    sal_pes: sal,
+                    cel_pes: celular,
+                    tel_com: telefone,
+                    email_pes: email,
+                    pass_pes: senha
+                }).where('id_pes', id)
+
+            return res.json({ ok: "Usuário editado" })
+
+        } catch (error) {
+            next(error)
+        }
+    },
 
     //deletar um usuário
     async delete(req, res, next) {
