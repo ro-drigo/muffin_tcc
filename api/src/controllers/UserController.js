@@ -92,5 +92,20 @@ module.exports = {
         }catch (error) {
             next(error)
         }
+    },
+
+
+    //deletar um usuário
+    async delete(req, res, next) {
+        try {
+            const { id } = req.params
+
+            await knex('pessoa').where({ id_pes: id }).del()
+
+            return res.json({ ok: "Usuário deletado" })
+        } catch (error) {
+            next(error)
+        }
     }
+    
  }

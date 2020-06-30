@@ -13,6 +13,9 @@ routes.get('/users/:id', UserController.show)
 //cadastrar usuário
 routes.post('/users', UserController.create)
 
+//deletar usuário
+routes.delete('/users/:id', UserController.delete)
+
 
 //listar todos os orçamentos
 routes.get('/orc', OrcamentoController.index)
