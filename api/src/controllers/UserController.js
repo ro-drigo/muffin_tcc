@@ -10,7 +10,20 @@ verificaCidade = async (cidade) => {
         return true
     }else{
         //caso já exista
-        return select
+        return Object.values(select[0])
+    }
+}
+
+//função para verificar se a cidade que está cadastrando já existe
+verificaCep = async (cep) => {
+    const select = await knex('endereco').where('cep_end', cep).select('cep_end')
+    
+    if(select.length == 0){
+        //verdadeiro para cadastrar
+        return true
+    }else{
+        //caso já exista
+        return Object.values(select[0])
     }
 }
 
@@ -75,18 +88,24 @@ module.exports = {
                     }
                 )
                 
-                vcidade = await verificaCidade(cidade)
+                vcidade = await verificaCidade(cidade) //pegar o id da cidade que acabou de registrar
             }
 
             //registrando o endereço
-            const regist_endereco = await knex('endereco').insert(
-                { 
-                    cep_end: cep,
-                    lograd_end: rua, 
-                    bairro_end: bairro, 
-                    id_city: knex('cidade').max('id_city')
-                }
-            )
+            let vcep = await verificaCep(cep) //se true temos que cadastrar
+
+            if(vcep == true){
+                const regist_endereco = await knex('endereco').insert(
+                    { 
+                        cep_end: cep,
+                        lograd_end: rua, 
+                        bairro_end: bairro, 
+                        id_city: vcidade[0]
+                    }
+                )
+
+                vcep = await verificaCep(cep) //pegar o cep que acabou de registrar
+            }
 
             //registrando na tabela pessoa
             const regist_pessoa = await knex('pessoa').insert(
@@ -94,8 +113,8 @@ module.exports = {
                     cpf_pes: cpf, 
                     nome_pes: nome, 
                     date_nasc: datanasc, 
-                    id_end: knex('endereco').max('id_end'),
                     sal_pes: sal, 
+                    cep_end: vcep[0],
                     comp_pes: complemento,
                     num_pes: numero,
                     cel_pes: celular,
