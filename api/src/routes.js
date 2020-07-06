@@ -19,6 +19,9 @@ routes.put('/users/:id', UserController.update)
 //deletar usuário
 routes.delete('/users/:id', UserController.delete)
 
+//logar usuário
+routes.post('/authenticate', UserController.authenticate)
+
 
 //listar todos os orçamentos
 routes.get('/orc', OrcamentoController.index)

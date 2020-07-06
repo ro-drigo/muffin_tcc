@@ -192,6 +192,25 @@ module.exports = {
         } catch (error) {
             next(error)
         }
-    }
+    },
     
- }
+    //autenticar um usuário
+    async authenticate(req, res) {
+        const { email, senha } = req.body
+
+        //verificar se o email está cadastrado
+        const user = await knex('pessoa').where('email_pes', email).select('email_pes', 'pass_pes')
+
+        if(user.length == 0)
+            return res.status(400).send("usuário não existe")
+        
+        //verificando se a senha bate
+        if(!await bcrypt.compare(senha, user[0].pass_pes))
+            return res.status(400).send("senha inválida")
+
+        //tirando para não exibir a senha
+        user[0].pass_pes = undefined
+
+        res.send({ user })
+    }
+}
