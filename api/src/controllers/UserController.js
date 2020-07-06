@@ -56,6 +56,9 @@ module.exports = {
 
             const result = await knex('pessoa').where('id_pes', id)
 
+            //não mostrar a senha
+            result[0].pass_pes = undefined
+
             return res.json(result)
         }catch (error) {
             next(error)
