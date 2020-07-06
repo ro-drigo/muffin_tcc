@@ -1,5 +1,7 @@
 //importando o knex para usar
 const knex = require('../database')
+//biblioteca para encriptar
+const bcrypt = require('bcryptjs')
 
 //função para verificar se a cidade que está cadastrando já existe
 verificaCidade = async (cidade) => {
@@ -25,6 +27,13 @@ verificaCep = async (cep) => {
         //caso já exista
         return Object.values(select[0])
     }
+}
+
+//função para encriptar senha
+encryptSenha = async (senha) => {
+    const hash = await bcrypt.hash(senha, 10)
+
+    return hash
 }
 
 module.exports = {
@@ -108,6 +117,8 @@ module.exports = {
             }
 
             //registrando na tabela pessoa
+            hash = await encryptSenha(senha)
+
             const regist_pessoa = await knex('pessoa').insert(
                 { 
                     cpf_pes: cpf, 
@@ -120,7 +131,7 @@ module.exports = {
                     cel_pes: celular,
                     tel_com: telefone,
                     email_pes: email,
-                    pass_pes: senha
+                    pass_pes: hash
                 }
             )
 
