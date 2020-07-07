@@ -1,6 +1,7 @@
 //importando o knex para usar
 const knex = require('../database')
 
+
 module.exports = {
     //listar todos orçamentos
     async index(req, res, next) {

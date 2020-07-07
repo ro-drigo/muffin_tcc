@@ -23,6 +23,13 @@ routes.delete('/users/:id', UserController.delete)
 routes.post('/authenticate', UserController.authenticate)
 
 
+
+
+//importando o middleware da auth
+const authMiddleware = require('./middlewares/auth')
+
+routes.use(authMiddleware)
+
 //listar todos os orçamentos
 routes.get('/orc', OrcamentoController.index)
 
