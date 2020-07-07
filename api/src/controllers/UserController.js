@@ -2,6 +2,10 @@
 const knex = require('../database')
 //biblioteca para encriptar
 const bcrypt = require('bcryptjs')
+//importando o jwt
+const jwt = require('jsonwebtoken')
+//importar o segredo do token
+const authConfig = require('../config/auth.json')
 
 //função para verificar se a cidade que está cadastrando já existe
 verificaCidade = async (cidade) => {
@@ -34,6 +38,13 @@ encryptSenha = async (senha) => {
     const hash = await bcrypt.hash(senha, 10)
 
     return hash
+}
+
+//função para gerar token
+function generateToken(params = {}) {
+    return jwt.sign(params, authConfig.secret, {
+        expiresIn: 86400,
+    })
 }
 
 module.exports = {
@@ -199,7 +210,7 @@ module.exports = {
         const { email, senha } = req.body
 
         //verificar se o email está cadastrado
-        const user = await knex('pessoa').where('email_pes', email).select('email_pes', 'pass_pes')
+        const user = await knex('pessoa').where('email_pes', email).select('email_pes', 'pass_pes', 'id_pes')
 
         if(user.length == 0)
             return res.status(400).send("usuário não existe")
@@ -211,6 +222,9 @@ module.exports = {
         //tirando para não exibir a senha
         user[0].pass_pes = undefined
 
-        res.send({ user })
+        res.send({ 
+            user, 
+            token: generateToken({ id: user[0].id_pes }) 
+        })
     }
 }
