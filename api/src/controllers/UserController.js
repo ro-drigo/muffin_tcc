@@ -7,6 +7,21 @@ const jwt = require('jsonwebtoken')
 //importar o segredo do token
 const authConfig = require('../config/auth.json')
 
+//função para verificar se o email já existe
+verificaEmail = async (email) => {
+
+        const select = await knex('pessoa').where('email_pes', email).select('email_pes')
+
+        if(select[0] == undefined){
+            //se o email não existir no banco, retorna false
+            return false
+        }else if(select[0].email_pes == email){
+            //se existir, retorna true
+            return true
+        }
+        
+}
+
 //função para verificar se a cidade que está cadastrando já existe
 verificaCidade = async (cidade) => {
     const select = await knex('cidade').where('nome_city', cidade).select('id_city')
@@ -101,6 +116,14 @@ module.exports = {
 
             } = req.body
 
+            //verificando o email
+            let vemail = await verificaEmail(email)
+
+            if(vemail == true){
+                return res.send("Email já existe")
+            }
+                
+
             //registrando a cidade
             let vcidade = await verificaCidade(cidade) //se true temos que cadastrar
 
@@ -155,6 +178,7 @@ module.exports = {
         }catch (error) {
             next(error)
         }
+
     },
 
     //editar um usuário
