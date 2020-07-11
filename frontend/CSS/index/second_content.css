@@ -1,0 +1,166 @@
+.content2{
+    max-width: 100%;
+    height: 45%;
+    padding: 6%;
+
+    background: url('../../IMAGENS/analisea.png.png') no-repeat;
+    background-position: 50vw 5vh;
+
+}
+
+.content2 .text{
+    height: 100%;
+    align-items: center;
+}
+
+.content2 .text{
+    text-align: center;
+    max-width: 50%;
+}
+
+.content2 .text h1{
+    color: blue;
+    font-weight: bold;
+}
+
+.content2 .text p{
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 2600px){
+    .content2 .text h1{
+        font-size: 70px;
+    }
+    
+    .content2 .text p{
+        font-size: 35px;
+    }
+
+    .content2{
+        background: url('../../IMAGENS/analisea.png.png') no-repeat;
+        background-position: 45vw 5vh;
+    }
+}
+
+@media screen and (max-width: 2300px){
+    .content2 .text{
+        max-width: 40%;
+    }
+    
+    .content2 .text h1{
+        font-size: 65px;
+    }
+    
+    .content2 .text p{
+        font-size: 32px;
+    }
+
+    .content2{
+        background: url('../../IMAGENS/analisea.png.png') no-repeat;
+        background-position: 40vw 5vh;
+    }
+}
+
+@media screen and (max-width: 2100px){
+    .content2 .text{
+        max-width: 39%;
+    }
+    
+    .content2 .text h1{
+        font-size: 60px;
+    }
+    
+    .content2 .text p{
+        font-size: 30px;
+    }
+
+    .content2{
+        background: url('../../IMAGENS/analisea.png.png') no-repeat;
+        background-position: 37vw 0vh;
+    }
+}
+
+@media screen and (max-width: 2000px){
+    .content2 .text{
+        max-width: 37%;
+    }
+    
+    .content2 .text h1{
+        font-size: 55px;
+    }
+
+    .content2 .text p{
+        font-size: 28px;
+    }
+
+    .content2{
+        background: url('../../IMAGENS/analisea.png.png') no-repeat;
+        background-position: 34vw 0vh;
+    }
+}
+
+@media screen and (max-width: 1800px){
+    .content2 .text{
+        max-width: 45%;
+    }
+    
+    .content2 .text h1{
+        font-size: 50px;
+    }
+    
+    .content2 .text p{
+        font-size: 25px;
+    }
+
+    .content2{
+        background: url('../../IMAGENS/analisea.png.png') no-repeat;
+        background-position: 55vw 15vh;
+    }
+}
+
+@media screen and (max-width: 1600px){
+    .content2 .text{
+        max-width: 45%;
+    }
+    
+    .content2 .text h1{
+        font-size: 45px;
+    }
+
+    .content2 .text p{
+        font-size: 20px;
+    }
+
+    .content2{
+        background: url('../../IMAGENS/analisea.png.png') no-repeat;
+        background-position: 50vw 23vh;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .content2{
+        background: url('../../IMAGENS/analisea.png.png') no-repeat;
+        background-position: 48vw 20vh;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .content2{
+        background: url('../../IMAGENS/analisea.png.png') no-repeat;
+        background-position: 150vw 8vh;
+    }
+    
+    .content2 .text{
+        padding: 0px 50px 0px 50px;
+        max-width: 100%;
+    }
+    
+    .content2 .text h1{
+        font-size: 35px;
+    }
+    
+    .content2 .text p{
+        font-size: 18px;
+    }
+}

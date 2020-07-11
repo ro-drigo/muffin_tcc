@@ -1,0 +1,257 @@
+main *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container{
+    width: 100%;
+    height: 180vh;
+
+}
+
+.content{
+    max-width: 100%;
+    height: 45%;
+    padding: 6%;
+
+    background: url('../../IMAGENS/carteiran.png.png') no-repeat;
+    background-position: 50vw 5vh;
+
+}
+
+.text{
+    height: 100%;
+    align-items: center;
+}
+
+.content .text{
+    text-align: center;
+    max-width: 50%;
+}
+
+.content .text h1{
+    color: blue;
+    font-weight: bold;
+}
+
+.content .text h3{
+    color: rgb(97, 181, 209);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.content .text p{
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.content .text button{
+    color: white;
+    margin-top: 20px;
+    background-color: rgb(21, 181, 235);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+@media screen and (max-width: 2600px){
+    .content .text h1{
+        font-size: 70px;
+    }
+
+    .content .text h3{
+        font-size: 50px;
+    }
+    
+    .content .text p{
+        font-size: 35px;
+    }
+
+    .content .text button{
+        font-size: 36px;
+        margin-top: 40px;
+    }
+
+    .content{
+        background: url('../../IMAGENS/carteira.png.jpeg') no-repeat;
+        background-position: 45vw 5vh;
+    }
+}
+
+@media screen and (max-width: 2300px){
+    .content .text{
+        max-width: 40%;
+    }
+    
+    .content .text h1{
+        font-size: 65px;
+    }
+
+    .content .text h3{
+        font-size: 45px;
+    }
+    
+    .content .text p{
+        font-size: 32px;
+    }
+
+    .content .text button{
+        font-size: 34px;
+        margin-top: 38px;
+    }
+
+    .content{
+        background: url('../../IMAGENS/carteira.png.jpeg') no-repeat;
+        background-position: 40vw 5vh;
+    }
+}
+
+@media screen and (max-width: 2100px){
+    .content .text{
+        max-width: 39%;
+    }
+    
+    .content .text h1{
+        font-size: 60px;
+    }
+
+    .content .text h3{
+        font-size: 42px;
+    }
+    
+    .content .text p{
+        font-size: 30px;
+    }
+
+    .content .text button{
+        font-size: 32px;
+        margin-top: 34px;
+    }
+
+    .content{
+        background: url('../../IMAGENS/carteira.png.jpeg') no-repeat;
+        background-position: 37vw 0vh;
+    }
+}
+
+@media screen and (max-width: 2000px){
+    .content .text{
+        max-width: 37%;
+    }
+    
+    .content .text h1{
+        font-size: 55px;
+    }
+
+    .content .text h3{
+        font-size: 38px;
+    }
+    
+    .content .text p{
+        font-size: 28px;
+    }
+
+    .content .text button{
+        font-size: 30px;
+        margin-top: 33px;
+    }
+
+    .content{
+        background: url('../../IMAGENS/carteira.png.jpeg') no-repeat;
+        background-position: 34vw 0vh;
+    }
+}
+
+@media screen and (max-width: 1800px){
+    .content .text{
+        max-width: 45%;
+    }
+    
+    .content .text h1{
+        font-size: 50px;
+    }
+
+    .content .text h3{
+        font-size: 31px;
+    }
+    
+    .content .text p{
+        font-size: 25px;
+    }
+
+    .content .text button{
+        font-size: 28px;
+        margin-top: 33px;
+    }
+
+    .content{
+        background: url('../../IMAGENS/carteiran.png.png') no-repeat;
+        background-position: 55vw 15vh;
+    }
+}
+
+@media screen and (max-width: 1600px){
+    .content .text{
+        max-width: 45%;
+    }
+    
+    .content .text h1{
+        font-size: 45px;
+    }
+
+    .content .text h3{
+        font-size: 25px;
+    }
+    
+    .content .text p{
+        font-size: 20px;
+    }
+
+    .content .text button{
+        font-size: 22px;
+        margin-top: 28px;
+    }
+
+    .content{
+        background: url('../../IMAGENS/carteiran.png.png') no-repeat;
+        background-position: 50vw 8vh;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .content{
+        background: url('../../IMAGENS/carteiran.png.png') no-repeat;
+        background-position: 43vw 8vh;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .content{
+        background: url('../../IMAGENS/carteiran.png.png') no-repeat;
+        background-position: 150vw 8vh;
+    }
+    
+    .content .text{
+        padding: 0px 50px 0px 50px;
+        max-width: 100%;
+    }
+    
+    .content .text h1{
+        font-size: 35px;
+    }
+
+    .content .text h3{
+        font-size: 22px;
+    }
+    
+    .content .text p{
+        font-size: 18px;
+    }
+
+    .content .text button{
+        font-size: 22px;
+        margin-top: 28px;
+    }
+
+}
