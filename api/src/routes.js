@@ -3,6 +3,7 @@ const routes = express.Router()
 
 const UserController = require('./controllers/UserController')
 const OrcamentoController = require('./controllers/OrcamentoController')
+const SimuladoresController = require('./controllers/SimuladoresController')
 
 //listar todos os usuários
 routes.get('/users', UserController.index)
@@ -22,6 +23,9 @@ routes.delete('/users/:id', UserController.delete)
 //logar usuário
 routes.post('/authenticate', UserController.authenticate)
 
+
+//simular juros compostos
+routes.post('/juroscompostos', SimuladoresController.jurosCompostos)
 
 
 
