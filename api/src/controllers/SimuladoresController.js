@@ -17,13 +17,31 @@ module.exports = {
             let montante = parseFloat(capital) * parseFloat(v3);
             
             //montante formatado para o número não retornar tão extenso
-            let montanteFormatado = montante.toFixed(4)
+            let montanteFormatado = montante.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
             res.json(montanteFormatado)
         } catch (error) {
             next(error)
         }
         
+    },
+
+    independenciaFinanceira(req, res, next) {
+        try {
+            
+            const { investir, receber, inflacao } = req.body
+
+            //calculo da independencia financeira
+            let n = (parseFloat(investir) + parseFloat(receber) * 12) / (parseFloat(inflacao))
+
+            //formatando pra padrão br
+            const formatado = n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
+            res.json(formatado)
+
+        } catch (error) {
+            next(error)
+        }
     }
 
 }

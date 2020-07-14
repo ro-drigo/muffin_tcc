@@ -27,6 +27,9 @@ routes.post('/authenticate', UserController.authenticate)
 //simular juros compostos
 routes.post('/juroscompostos', SimuladoresController.jurosCompostos)
 
+//simular independência financeira
+routes.post('/independenciafinanceira', SimuladoresController.independenciaFinanceira)
+
 
 
 //importando o middleware da auth
