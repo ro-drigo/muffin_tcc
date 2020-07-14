@@ -7,8 +7,9 @@
 }*/
 
 .banner{
-    height: 25%;
+    height: 40%;
     width: 100%;
+
 }
 
 @media screen and (max-width: 700px){
@@ -21,6 +22,5 @@
 @media screen and (max-width: 500px){
     .banner{
         height: 10%;
-        margin-top: 10vh;
     }
 }

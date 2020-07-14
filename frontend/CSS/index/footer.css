@@ -1,0 +1,85 @@
+footer *{
+    margin: 0;
+    padding: 0;
+
+}
+
+footer{
+    width: 100%;
+    background: #2a82e7;
+    display: block;
+}
+
+footer .footer-content{
+    width: 95%;
+    margin: auto;
+    padding: 30px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+footer .footer-content .footer-item{
+    width: 30%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+footer .footer-content .footer-item h2{
+    margin: 10px 0px;
+    color: white;
+    font-size: 22px;
+    font-weight: lighter;
+}
+
+footer .footer-content .footer-item .borda{
+    height: 2px;
+    width: 40px;
+    display: block;
+    background-color: lightcyan;
+}
+
+footer .footer-content .footer-item ul{
+    margin-top: 30px;
+}
+
+footer .footer-content .footer-item ul a{
+    list-style: none;
+    color: lightgray;
+    text-decoration: none;
+    letter-spacing: 1px;
+    outline: none;
+    transition: 0.3s;
+}
+
+footer .footer-content .footer-item ul a:hover{
+    color: white;
+}
+
+footer .footer-content .footer-item ul a li{
+    opacity: 1;
+    margin: 10px 0px;
+    height: 25px;
+}
+
+footer .footer-bottom{
+    width: 100%;
+    padding: 10px 0;
+    background-color: rgb(106, 106, 224);
+    color: pink;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 850px){
+    footer .footer-content .footer-item ul a{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 800px){
+    footer .footer-content .footer-item{
+        width: 100%;
+    }
+}

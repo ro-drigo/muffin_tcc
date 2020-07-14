@@ -38,8 +38,8 @@
     }
 
     .content2{
-        background: url('../../IMAGENS/analisea.png.png') no-repeat;
-        background-position: 45vw 5vh;
+        background: url('../../IMAGENS/analise.png.jpeg') no-repeat;
+        background-position: 47vw 10vh;
     }
 }
 
@@ -57,8 +57,8 @@
     }
 
     .content2{
-        background: url('../../IMAGENS/analisea.png.png') no-repeat;
-        background-position: 40vw 5vh;
+        background: url('../../IMAGENS/analise.png.jpeg') no-repeat;
+        background-position: 40vw 10vh;
     }
 }
 
@@ -76,7 +76,7 @@
     }
 
     .content2{
-        background: url('../../IMAGENS/analisea.png.png') no-repeat;
+        background: url('../../IMAGENS/analise.png.jpeg') no-repeat;
         background-position: 37vw 0vh;
     }
 }
@@ -95,8 +95,8 @@
     }
 
     .content2{
-        background: url('../../IMAGENS/analisea.png.png') no-repeat;
-        background-position: 34vw 0vh;
+        background: url('../../IMAGENS/analise.png.jpeg') no-repeat;
+        background-position: 35vw 3vh;
     }
 }
 
@@ -115,7 +115,7 @@
 
     .content2{
         background: url('../../IMAGENS/analisea.png.png') no-repeat;
-        background-position: 55vw 15vh;
+        background-position: 50vw 18vh;
     }
 }
 
@@ -134,14 +134,14 @@
 
     .content2{
         background: url('../../IMAGENS/analisea.png.png') no-repeat;
-        background-position: 50vw 23vh;
+        background-position: 50vw 15vh;
     }
 }
 
 @media screen and (max-width: 1200px){
     .content2{
         background: url('../../IMAGENS/analisea.png.png') no-repeat;
-        background-position: 48vw 20vh;
+        background-position: 43vw 15vh;
     }
 }
 
