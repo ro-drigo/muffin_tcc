@@ -44,9 +44,13 @@ main *{
     margin-top: 10px;
 }
 
-.content .text button{
+.content .text #textThree{
+    margin-bottom: 25px;
+}
+
+.content .text .btnCadastrar{
     color: white;
-    margin-top: 20px;
+    text-decoration: none;
     background-color: rgb(21, 181, 235);
     border: none;
     border-radius: 5px;

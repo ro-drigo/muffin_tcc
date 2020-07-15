@@ -2,6 +2,10 @@
     --navbar-color: #FFFAFA;
 }
 
+body{
+    position: absolute;
+}
+
 header *, body{
     margin: 0;
     padding: 0;

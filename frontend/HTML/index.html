@@ -7,12 +7,51 @@
     <link rel="stylesheet" href="/CSS/index/first_content.css">
     <link rel="stylesheet" href="/CSS/index/second_content.css">
     <link rel="stylesheet" href="/CSS/index/banner.css">
+    <link rel="stylesheet" href="/CSS/index/modal-login.css">
+    <link rel="stylesheet" href="/CSS/index/modal-register.css">
     <link rel="stylesheet" href="/CSS/index/footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <title>Muffin</title>
 </head>
 <body>
-    <div id="page-home"> 
+        <div id="page-home"> 
+            <div class="modal" id="modal">
+                <div class="modal-container">
+                    <a href="#" class="closeLogin">X</a>
+                    <div class="modal-header">
+                        <a href="#modal-register" class="linkRegister">Registre-se</a>
+                        <a href="#" class="linkLogin">Login</a>
+                    </div>
+        
+                    <form action="#" class="info">
+                        <input type="text" placeholder="Nome de usuário ou E-mail" id="nameUser"><br>
+                        <input type="password" placeholder="Senha" id="passUser"><br>
+                        <input type="checkbox" id="lembrar"><label for="lembrar">Lembrar usuário</label>
+                        <a href="#" class="forgotPassword">Esqueceu sua senha?</a>
+                        <input type="submit" value="ENTRAR" id="entrar">
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal" id="modal-register">
+                <div class="modal-register-container">
+                    <a href="#" class="closeRegister">X</a>
+                    <div class="modal-register-header">
+                        <a href="#" class="linkRegisterRegister">Registre-se</a>
+                        <a href="#modal" class="linkLoginRegister">Login</a>
+                    </div>
+        
+                    <form action="#" class="info-register">
+                        <input type="text" placeholder="Escreva seu nome completo" id="nameUser"><br>
+                        <input type="text" placeholder="Escreva seu e-mail" id="emailUser"><br>
+                        <input type="text" placeholder="Escreva seu CPF" id="cpfUser"><br>
+                        <input type="password" placeholder="Digite uma senha" id="passUser"><br>
+                        <input type="password" placeholder="Confirme sua senha" id="confPassUser"><br>
+                        <input type="submit" value="INSCREVA-SE" id="inscrever">
+                    </form>
+                </div>
+            </div>
+
             <header>
                 <nav>    
                     <div id="logo">
@@ -36,10 +75,10 @@
                             <a href="#" class="black-link">Dúvidas</a>
                         </li>
                         <li>
-                            <a href="#" class="white-link">Login</a>
+                            <a href="#modal" class="white-link">Login</a>
                         </li>
                         <li>
-                            <a href="#" class="blue-link">Cadastre-se</a>
+                            <a href="#modal-register" class="blue-link">Cadastre-se</a>
                         </li>
                     </ul>
 
@@ -57,15 +96,15 @@
                         <div class="text">
                             <h1>MUFFIN</h1>
                             <h3>Gerenciamento inteligente</h3>
-                            <p align = "justify";>&nbsp;&nbsp;&nbsp;Olá! Fui desenvolvido para administrar melhor suas finanças pessoais
+                            <p align = "justify";>&nbsp;&nbsp;Olá! Fui desenvolvido para administrar melhor suas finanças pessoais
                             e te introduzir no mundo dos investimentos.
                             </p>
-                            <p align = "justify";>&nbsp;Aqui você irá administrar seus gastos mensais, acessar simuladores
+                            <p align = "justify";>&nbsp;&nbsp;&nbsp;&nbsp;Aqui você irá administrar seus gastos mensais, acessar simuladores
                             e calculadoras de investimentos e ainda irá ter indicações de
                             onde aprender mais sobre finanças e investimentos!!!
                             </p>
-                            <p align = "justify";>&nbsp;&nbsp;&nbsp;Legal né!? Clique no botão aqui embaixo para se cadastrar.</p>
-                            <center><button>Cadastre-se</button></center>
+                            <p align = "justify"; id="textThree">&nbsp;&nbsp;Legal né!? Clique no botão aqui embaixo para se cadastrar.</p>
+                            <center><a href="#modal-register" class="btnCadastrar">Cadastre-se</a></center>
                         </div>
                     </div>
 
@@ -88,9 +127,10 @@
                             </p>
                         </div>
                     </div>
+                    
                 </div>
-            </main>
-            
+            </main>   
+
             <footer>
                 <div class="footer-content">
                     <div class="footer-item">
