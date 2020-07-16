@@ -102,16 +102,10 @@ module.exports = {
                 cpf,
                 cidade,
                 rua,
-                complemento,
-                celular,
                 email,
-                datanasc,
                 cep,
                 estado,
-                numero,
                 bairro,
-                telefone,
-                sal,
                 senha
 
             } = req.body
@@ -161,13 +155,7 @@ module.exports = {
                 { 
                     cpf_pes: cpf, 
                     nome_pes: nome, 
-                    date_nasc: datanasc, 
-                    sal_pes: sal, 
                     cep_end: vcep[0],
-                    comp_pes: complemento,
-                    num_pes: numero,
-                    cel_pes: celular,
-                    tel_com: telefone,
                     email_pes: email,
                     pass_pes: hash
                 }
