@@ -174,28 +174,64 @@ module.exports = {
         try {
             const { 
                 nome,
-                cpf,
+                cidade,
+                rua,
+                complemento,
                 celular,
                 email,
                 datanasc,
-                telefone,
-                sal,
-                senha
+                cep,
+                estado,
+                numero,
+                bairro,
+                telefone
 
             } = req.body
 
             const { id } = req.params
 
+            //editar os dados de cidade
+
+            let vcidade = await verificaCidade(cidade) //se true temos que cadastrar
+
+            if(vcidade == true){
+                const regist_cidade = await knex('cidade').insert(
+                    { 
+                        nome_city: cidade,
+                        id_uf: estado
+                    }
+                )
+                
+                vcidade = await verificaCidade(cidade) //pegar o id da cidade que acabou de registrar
+            }
+
+            //editar os dados de endereço
+            let vcep = await verificaCep(cep) //se true temos que cadastrar
+
+            if(vcep == true){
+                const regist_endereco = await knex('endereco').insert(
+                    { 
+                        cep_end: cep,
+                        lograd_end: rua, 
+                        bairro_end: bairro, 
+                        id_city: vcidade[0]
+                    }
+                )
+
+                vcep = await verificaCep(cep) //pegar o cep que acabou de registrar
+            }
+
+            //editar dados da pessoa
             await knex('pessoa').update
                 ({ 
                     nome_pes: nome,
-                    cpf_pes: cpf,
                     date_nasc: datanasc,
-                    sal_pes: sal,
+                    email_pes: email,
                     cel_pes: celular,
                     tel_com: telefone,
-                    email_pes: email,
-                    pass_pes: senha
+                    comp_pes: complemento,
+                    num_pes: numero,
+                    cep_end: vcep[0]
                 }).where('id_pes', id)
 
             return res.json({ ok: "Usuário editado" })
