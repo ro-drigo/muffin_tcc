@@ -34,12 +34,21 @@ module.exports = {
     async create(req, res, next) {
         try{
             const { 
+                salario,
                 date_orc,
                 renda_orc,
                 gasto_total,
+                reserva_mensal
             } = req.body
 
             const { id } = req.params
+
+            //atualizar salário do usuário
+            const novosalario = await knex('pessoa').update(
+                {
+                    sal_pes: salario
+                }
+            ).where('id_pes', id)
 
             //registrando orçamento
             const regist_orcamento = await knex('orcamento').insert(
@@ -47,6 +56,7 @@ module.exports = {
                     date_orc,
                     renda_orc,
                     gasto_total,
+                    reserva_mensal,
                     id_pes: id
                 }
             )

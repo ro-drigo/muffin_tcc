@@ -40,10 +40,10 @@ routes.use(authMiddleware)
 //listar todos os orçamentos
 routes.get('/orc', OrcamentoController.index)
 
-//listar apenas um usuário
+//listar apenas um Orçamento
 routes.get('/orc/:id', OrcamentoController.show)
 
-//cadastrar usuário
+//cadastrar orçamento
 routes.post('/orc/:id', OrcamentoController.create)
 
 
