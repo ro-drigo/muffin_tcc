@@ -4,6 +4,7 @@ const routes = express.Router()
 const UserController = require('./controllers/UserController')
 const OrcamentoController = require('./controllers/OrcamentoController')
 const SimuladoresController = require('./controllers/SimuladoresController')
+const BalancoAnualController = require('./controllers/BalancoAnualController')
 
 //listar todos os usuários
 routes.get('/users', UserController.index)
@@ -45,6 +46,9 @@ routes.get('/orc/:id', OrcamentoController.show)
 
 //cadastrar orçamento
 routes.post('/orc/:id', OrcamentoController.create)
+
+//consultar balanço anual do usuário
+routes.get('/balancoanual/:id', BalancoAnualController.index)
 
 
 module.exports = routes
