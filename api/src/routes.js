@@ -31,6 +31,9 @@ routes.post('/juroscompostos', SimuladoresController.jurosCompostos)
 //simular independência financeira
 routes.post('/independenciafinanceira', SimuladoresController.independenciaFinanceira)
 
+//comparadores
+routes.post('/comparador', SimuladoresController.comparadores)
+
 
 
 //importando o middleware da auth

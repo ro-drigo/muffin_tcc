@@ -1,3 +1,7 @@
+const request = require('request-promise')
+const cheerio = require('cheerio')
+
+
 module.exports = {
 
     jurosCompostos (req, res, next) {
@@ -38,6 +42,67 @@ module.exports = {
             const formatado = n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
             res.json(formatado)
+
+        } catch (error) {
+            next(error)
+        }
+    },
+
+    comparadores(req, res, next){
+        try {
+            
+            const { investimento, tempo } = req.body
+
+            const prefixado_2026 = 5.99
+            const ipca_2045 = 3.67 + 0.26
+            const ipca_2035 = 3.67 + 0.26
+            const poupanca = 1.575
+
+            //Calculos de poupança
+
+            var p1 = parseFloat(tempo) * parseFloat(poupanca);
+            var p2 = parseFloat(p1) / 100;
+            var p3 = parseFloat(p2) * parseFloat(investimento);
+
+            var p4 = parseFloat(p3) + parseFloat(investimento);
+
+            const fp2 = p4.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+
+            //Calculos de Tesouro IPCA 2045
+
+            var t1 = parseFloat(tempo) * parseFloat(ipca_2045);
+            var t2 = parseFloat(t1) / 100;
+            var t3 = parseFloat(t2) * parseFloat(investimento);
+            var t4 = parseFloat(t3) + parseFloat(investimento); 
+
+            const ft = t4.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            //Calculos de Tesouro IPCA 2035
+
+            var i1 = parseFloat(tempo) * parseFloat(ipca_2035);
+            var i2 = parseFloat(i1) / 100;
+            var i3 = parseFloat(i2) * parseFloat(investimento);
+            var i4 = parseFloat(i3) + parseFloat(investimento); 
+
+            const fi = i4.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+
+            //Calculos de Tesouro PREFIXADO
+
+            var tp1 = parseFloat(tempo) * parseFloat(prefixado_2026);
+            var tp2 = parseFloat(tp1) / 100;
+            var tp3 = parseFloat(tp2) * parseFloat(investimento);
+            var tp4 = parseFloat(tp3) + parseFloat(investimento); 
+
+            const ftp = tp4.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            res.json({
+                "Valor tesouro prefixado 2026": ftp,
+                "Valor tesouro ipca 2045": ft,
+                "Valor tesouro ipca 2035": fi,
+                "Valor poupança": fp2
+            });  
 
         } catch (error) {
             next(error)
