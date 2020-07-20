@@ -52,6 +52,7 @@ module.exports = {
         try {
             
             const { investimento, tempo } = req.body
+         
 
             const prefixado_2026 = 5.99
             const ipca_2045 = 3.67 + 0.26
