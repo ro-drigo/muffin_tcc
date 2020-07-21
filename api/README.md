@@ -1,2 +1,2 @@
-express, pg, nodemon, knex, bcryptjs, jsonwebtoken, request-promise, cheerio
+express, pg, nodemon, knex, bcryptjs, jsonwebtoken, puppeteer
 run with "npm start"

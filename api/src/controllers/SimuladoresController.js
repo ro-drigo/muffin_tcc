@@ -1,6 +1,24 @@
-const request = require('request-promise')
-const cheerio = require('cheerio')
+const puppeteer = require('puppeteer')
 
+prefixado2026 = async () => {
+    let url = 'https://www.tesourodireto.com.br/titulos/calculadora.htm'
+    
+    let browser = await puppeteer.launch()
+    
+    let page = await browser.newPage()
+
+    await page.goto(url, {waitUntil: 'networkidle2'})
+
+    let data = await page.evaluate(() => {
+        let rent = document.querySelectorAll('td[class="td-calc-table__invest__item"]')[5].innerHTML
+
+        return rent
+    })
+
+    return data
+
+    await browser.close()
+}
 
 module.exports = {
 
@@ -48,13 +66,19 @@ module.exports = {
         }
     },
 
-    comparadores(req, res, next){
+    async comparadores(req, res, next){
         try {
             
             const { investimento, tempo } = req.body
-         
+            
+            //pegamos a rentabilidade do prefixado_2026 vindo da função
+            let rent = await prefixado2026()
+            
+            //trocamos a virgula por ponto para transformar em float depois
+            rent = rent.replace(",", ".")
+            
 
-            const prefixado_2026 = 5.99
+            const prefixado_2026 = parseFloat(rent)
             const ipca_2045 = 3.67 + 0.26
             const ipca_2035 = 3.67 + 0.26
             const poupanca = 1.575
