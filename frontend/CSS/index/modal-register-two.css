@@ -1,4 +1,4 @@
-.modal-register{
+.modal-register-two{
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -8,15 +8,15 @@
     transition: all 500ms ease;
 }
 
-.modal-register:target{
+.modal-register-two:target{
     opacity: 1;
     pointer-events: all;
 }
 
-.modal-register-container{
+.modal-register-container-two{
     border: 3px solid;
     width: 400px;
-    height: 455px;
+    height: 400px;
     background: white;
 
     margin: auto;
@@ -26,14 +26,14 @@
     left: 0px;
     right: 0px;
 }
-.modal-register-header{
+.modal-register-header-two{
     width: 100%;
     display: flex;
 
     
 }
 
-.linkRegisterRegister{
+.linkRegisterRegisterTwo{
     text-decoration: none;
     color: black;
     width: 60%;
@@ -43,7 +43,7 @@
     pointer-events: none;
 }
 
-.linkLoginRegister{
+.linkLoginRegisterTwo{
     text-decoration: none;
     color: gray;
     background-color: lightgray;
@@ -53,7 +53,7 @@
     padding: 20px;
 }
 
-.closeRegister{
+.closeRegisterTwo{
     color: black;
     position: absolute;
     right: 5px;
@@ -63,24 +63,29 @@
     padding: 5px;
 }
 
-.info-register{
+.info-register-two{
     padding: 20px;
 }
 
-.info-register input{
+.info-register-two input{
     border: solid 1px;
     padding: 10px;
-    width: 100%;
     box-sizing: border-box;
-    border-radius: 0px 4px 4px 0px;
     border-color: lightgray;
     height: 45px;
     font-size: 15px;
     margin-bottom: 15px;
 }
 
- 
-.info-register #inscrever{
+.info-register-two .inputHundred{
+    width: 100%;
+}
+
+.info-register-two .inputFifty{
+    width: 49.25%;
+}
+
+.info-register-two #inscrever{
     width: 100%;
     height: 50px;
     border: 1px solid rgb(116, 116, 253);
@@ -90,7 +95,7 @@
     font-size: 25px;
 }
 
-.info-register #inscrever:hover{
+.info-register-two #inscrever:hover{
     background-color: rgb(87, 87, 233);
     transition: 750ms;
 }

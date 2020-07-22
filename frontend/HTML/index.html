@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/index/navbar.css">
+
     <link rel="stylesheet" href="/CSS/index/first_content.css">
     <link rel="stylesheet" href="/CSS/index/second_content.css">
     <link rel="stylesheet" href="/CSS/index/banner.css">
+
     <link rel="stylesheet" href="/CSS/index/modal-login.css">
     <link rel="stylesheet" href="/CSS/index/modal-register.css">
+    <link rel="stylesheet" href="/CSS/index/modal-register-two.css">
+
     <link rel="stylesheet" href="/CSS/index/footer.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <title>Muffin</title>
 </head>
@@ -26,7 +31,7 @@
                     <form action="#" class="info">
                         <input type="text" placeholder="Nome de usuário ou E-mail" id="nameUser"><br>
                         <input type="password" placeholder="Senha" id="passUser"><br>
-                        <input type="checkbox" id="lembrar"><label for="lembrar">Lembrar usuário</label>
+                        <input type="checkbox" id="lembrar"><label for="lembrar">Manter conectado</label>
                         <a href="#" class="forgotPassword">Esqueceu sua senha?</a>
                         <input type="submit" value="ENTRAR" id="entrar">
                     </form>
@@ -41,13 +46,32 @@
                         <a href="#modal" class="linkLoginRegister">Login</a>
                     </div>
         
-                    <form action="#" class="info-register">
+                    <form action="#modal-register-two" class="info-register">
                         <input type="text" placeholder="Escreva seu nome completo" id="nameUser"><br>
                         <input type="text" placeholder="Escreva seu e-mail" id="emailUser"><br>
                         <input type="text" placeholder="Escreva seu CPF" id="cpfUser"><br>
                         <input type="password" placeholder="Digite uma senha" id="passUser"><br>
                         <input type="password" placeholder="Confirme sua senha" id="confPassUser"><br>
-                        <input type="submit" value="INSCREVA-SE" id="inscrever">
+                        <input type="submit" value="Continuar" id="inscrever">
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-register-two" id="modal-register-two">
+                <div class="modal-register-container-two">
+                    <a href="#" class="closeRegisterTwo">X</a>
+                    <div class="modal-register-header-two">
+                        <a href="#" class="linkRegisterRegisterTwo">Registre-se</a>
+                        <a href="#modal" class="linkLoginRegisterTwo">Login</a>
+                    </div>
+        
+                    <form action="#" class="info-register-two">
+                        <input type="text" placeholder="Digite seu CEP" id="cepUser" class="inputHundred"><br>
+                        <input type="text" placeholder="Logradouro" id="logUser" class="inputHundred" disabled><br>
+                        <input type="text" placeholder="Cidade" id="cityUser" class="inputFifty" disabled>
+                        <input type="password" placeholder="Estado" id="ufUser" class="inputFifty" disabled><br>
+                        <input type="password" placeholder="Bairro" id="bairroUser" class="inputHundred" disabled><br>
+                        <input type="submit" value="Concluir" id="inscrever" class="inputHundred">
                     </form>
                 </div>
             </div>
@@ -104,7 +128,11 @@
                             onde aprender mais sobre finanças e investimentos!!!
                             </p>
                             <p align = "justify"; id="textThree">&nbsp;&nbsp;Legal né!? Clique no botão aqui embaixo para se cadastrar.</p>
-                            <center><a href="#modal-register" class="btnCadastrar">Cadastre-se</a></center>
+                            <center>
+                                <a href="#modal-register" class="btnCadastrar hiddenLink">Cadastre-se</a>
+                                <a href="#modal" class="btnCadastrar hiddenLink">Login</a>
+                            </center>
+                            
                         </div>
                     </div>
 

@@ -57,6 +57,16 @@ main *{
     padding: 10px;
 }
 
+.content .text .hiddenLink{
+    display: none;
+}
+
+
+.content .text .btnCadastrar:hover{
+    background-color: rgb(87, 87, 233);
+    transition: 750ms;
+}
+
 @media screen and (max-width: 2600px){
     .content .text h1{
         font-size: 70px;
@@ -70,7 +80,7 @@ main *{
         font-size: 35px;
     }
 
-    .content .text button{
+    .content .text .btnCadastrar{
         font-size: 36px;
         margin-top: 40px;
     }
@@ -126,7 +136,7 @@ main *{
         font-size: 30px;
     }
 
-    .content .text button{
+    .content .text .btnCadastrar{
         font-size: 32px;
         margin-top: 34px;
     }
@@ -154,7 +164,7 @@ main *{
         font-size: 28px;
     }
 
-    .content .text button{
+    .content .text .btnCadastrar{
         font-size: 30px;
         margin-top: 33px;
     }
@@ -182,7 +192,7 @@ main *{
         font-size: 25px;
     }
 
-    .content .text button{
+    .content .text .btnCadastrar{
         font-size: 28px;
         margin-top: 33px;
     }
@@ -210,7 +220,7 @@ main *{
         font-size: 20px;
     }
 
-    .content .text button{
+    .content .text .btnCadastrar{
         font-size: 22px;
         margin-top: 28px;
     }
@@ -238,6 +248,10 @@ main *{
         padding: 0px 50px 0px 50px;
         max-width: 100%;
     }
+
+    .content .text .hiddenLink{
+        display: inline;
+    }
     
     .content .text h1{
         font-size: 35px;
@@ -251,7 +265,7 @@ main *{
         font-size: 18px;
     }
 
-    .content .text button{
+    .content .text .btnCadastrar{
         font-size: 22px;
         margin-top: 28px;
     }

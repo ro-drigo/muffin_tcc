@@ -75,7 +75,6 @@ li{
 }
 
 
-
 @media screen and (max-width: 2600px){
     .nav-links li a{
         font-size: 40px;
@@ -152,21 +151,14 @@ li{
         background-color: var(--navbar-color);
     }
 
-    .nav-links .white-link{
-        background-color: var(--navbar-color);
-        color: black;
-    }
-
     .nav-links .blue-link{
-        background-color: var(--navbar-color);
-        color: black;
-        border: none;
+        display: none;
     }
     
     .nav-links{
         position: absolute;
         right: 0px;
-        height: 91vh;
+        height: 90vh;
         top: 10vh;
         background-color: var(--navbar-color);
         display: flex;
@@ -177,8 +169,13 @@ li{
         transition: transform 0.5s ease-in;
     }
 
+    .nav-links .white-link{
+        display: none;
+    }
+
     li{
         opacity: 0;
+        margin-top: 50px;
     }
     
     #slider{
