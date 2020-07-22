@@ -1,24 +1,46 @@
 const puppeteer = require('puppeteer')
 
-prefixado2026 = async () => {
-    let url = 'https://www.tesourodireto.com.br/titulos/calculadora.htm'
-    
+rentabilidade = async () => {
+    const tesourourl = 'https://www.tesourodireto.com.br/titulos/calculadora.htm'
+    const ibgeurl = 'https://www.ibge.gov.br/explica/inflacao.php'
+    const poupancaurl = 'https://artigos.toroinvestimentos.com.br/poupanca-rendimento-hoje'
+
     let browser = await puppeteer.launch()
     
     let page = await browser.newPage()
+    let page2 = await browser.newPage()
+    let page3 = await browser.newPage()
+    
+    await page.goto(tesourourl, {waitUntil: 'networkidle2'})
 
-    await page.goto(url, {waitUntil: 'networkidle2'})
+    let tesouro = await page.evaluate(() => {
+        let rentprefixado2026 = document.querySelectorAll('td[class="td-calc-table__invest__item"]')[5].innerHTML
+        let rentipca20352045 = document.querySelectorAll('td[class="td-calc-table__invest__item"]')[21].innerHTML
 
-    let data = await page.evaluate(() => {
-        let rent = document.querySelectorAll('td[class="td-calc-table__invest__item"]')[5].innerHTML
-
-        return rent
+        return { rentprefixado2026, rentipca20352045 }
     })
 
-    return data
+    await page2.goto(ibgeurl, {waitUntil: 'networkidle2'})
+
+    let ibge = await page2.evaluate(() => {
+        let ipca = document.querySelector('p[class="variavel-dado"]').innerHTML
+
+        return ipca
+    })
+
+    await page3.goto(poupancaurl, {waitUntil: 'networkidle2'})
+
+    let poupanca = await page3.evaluate(() => {
+        let rentpoupanca =  document.querySelector('strong[class="q POUPANCA"]').innerHTML
+
+        return rentpoupanca
+    })
 
     await browser.close()
+
+    return { tesouro, ibge, poupanca }
 }
+
 
 module.exports = {
 
@@ -71,17 +93,34 @@ module.exports = {
             
             const { investimento, tempo } = req.body
             
-            //pegamos a rentabilidade do prefixado_2026 vindo da função
-            let rent = await prefixado2026()
+            //pegamos as rentabilidades vindo da função
+            let rentabilidades = await rentabilidade()
             
             //trocamos a virgula por ponto para transformar em float depois
-            rent = rent.replace(",", ".")
+            let rentprefixado2026 = rentabilidades.tesouro.rentprefixado2026.replace(",", ".")
             
+            //pegando a rentabilidade ipca2035 e 2045 precisamos dar split para pegar só o valor
+            let rentipca20352045 = rentabilidades.tesouro.rentipca20352045
+            let separa = rentipca20352045.split(' ')
+            //trocamos a virgula por ponto para transformar em float depois
+            rentipca20352045 = separa[2].replace(",", ".")
 
-            const prefixado_2026 = parseFloat(rent)
-            const ipca_2045 = 3.67 + 0.26
-            const ipca_2035 = 3.67 + 0.26
-            const poupanca = 1.575
+            //pegamos o IPCA
+            let ipca = rentabilidades.ibge
+            //vamos tirar a porcentagem da string e trocar a virgula por ponto
+            ipca = ipca.replace("%", "")
+            ipca = ipca.replace(",", ".")
+
+            //pegamos a rentabilidade da poupança
+            let rentpoupanca = rentabilidades.poupanca
+            rentpoupanca = ipca.replace("%", "")
+            rentpoupanca = ipca.replace(",", ".")
+
+            //rentabilidades formatadas para conta
+            const prefixado_2026 = parseFloat(rentprefixado2026)
+            const ipca_2045 = parseFloat(rentipca20352045) + parseFloat(ipca)
+            const ipca_2035 = parseFloat(rentipca20352045) + parseFloat(ipca)
+            const poupanca = parseFloat(rentpoupanca)
 
             //Calculos de poupança
 
