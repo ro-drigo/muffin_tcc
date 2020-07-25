@@ -7,7 +7,11 @@ module.exports = {
     async index(req, res, next) {
         try{
             const { id } = req.params
-            res.send("Usuario " + id)
+
+            //comando para calcular o total da reserva mensal
+            const reserva = await knex('orcamento').where('id_pes', id).sum('reserva_mensal')
+            
+            res.json({reserva: reserva[0].sum})
 
         }catch (error) {
             next(error)
