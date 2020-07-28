@@ -15,6 +15,9 @@ module.exports = {
             let soma = 0
             let obj = []
 
+            if(conta == 0)
+                return res.json({ error: "usuário ainda não possui orçamento" })
+
 
             while(conta > 0){
                 for(i=0; i<conta; i++){
