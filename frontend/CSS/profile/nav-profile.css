@@ -5,7 +5,7 @@ body{
 }
 
 header{
-    background: rgb(182, 174, 174);
+    background: white;
     font-size: 22px;
     line-height: 32px;
     word-wrap: break-word !important;
@@ -81,7 +81,7 @@ nav ul{
 nav ul li{
     margin: 0;
     float: left;
-    background-color: rgb(182, 174, 174);
+    background-color: white;
 }
 
 nav a{
@@ -94,7 +94,7 @@ nav a{
 }
 
 nav ul li ul li:hover{
-    background-color: lightgray;
+    background-color: #FAEBD7;
 }
 
 nav ul ul{
@@ -128,13 +128,17 @@ li>a:only-child::after{
     content: "";
 }
 
-@media all and (max-width: 780px){
+@media all and (max-width: 850px){
     nav{
         margin: 0;
     }
 
     nav ul{
         float: none;
+             
+        position: absolute;
+        width: 100%;
+        top: 61px;
     }
 
     .toggle+a, .menu{
@@ -143,7 +147,7 @@ li>a:only-child::after{
 
     .toggle{
         display: block;
-        background-color: rgb(182, 174, 174);
+        background-color: white;
         padding: 0 20px;
         color: black;
         font-size: 20px;
@@ -153,7 +157,7 @@ li>a:only-child::after{
     }
 
     .toggle:hover{
-        background-color:lightgray;
+        background-color:#FAEBD7;
     }
 
     [id^=drop]:checked+ul{
@@ -171,11 +175,11 @@ li>a:only-child::after{
 
     nav ul ul ul a{
         padding: 0 80px;
-        background-color: lightgray;
+        background-color: #F5F5F5;
     }
 
     nav ul li ul li .toggle, nav ul ul a{
-        background-color: lightgray;
+        background-color: #FFFAFA;
     }
 
     nav ul ul{

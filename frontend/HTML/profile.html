@@ -8,6 +8,10 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/profile/nav-profile.css">
+    <link rel="stylesheet" href="../CSS/profile/tabs.css">
+    <link rel="stylesheet" href="../CSS/profile/tabs-forms.css">
+
+    <script src="../JS/profile/tabs.js" defer></script>
 </head>
 <body>
     <header>
@@ -73,6 +77,236 @@
             </ul>
         </nav>
     </header>
+
+    <main>
+        <div class="tab-div">
+            <ul class="tabs">
+                <li data-tab-target="#pessoais" class="active tab">Dados Pessoais</li>
+                <li data-tab-target="#financeiros" class="tab">Dados Financeiros</li>
+            </ul>
+    
+            <div class="profile-tabs">
+                <div id="pessoais" data-tab-content class="active">
+                    <form action=""> 
+                        <div class="foto">
+                            <img src="../IMAGENS/perfil-alterar.jpeg" alt="Falha em carregar imagem">
+                            <input type="file" name="nome">
+                        </div>
+                        
+                        <fieldset>
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="nome">Nome Completo</label>
+                                    <input type="text" name="nome">
+                                </div>
+                                <div class="field">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email">
+                                </div>
+                            </div>
+    
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="cpf">CPF</label>
+                                    <input type="text" name="cpf">
+                                </div>
+                                <div class="field">
+                                    <label for="nascimento">Data de Nascimento</label>
+                                    <input type="date" name="nascimento">
+                                </div>
+                            </div>
+    
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="cep">CEP</label>
+                                    <input type="text" name="cep">
+                                </div>
+                                <div class="field">
+                                    <label for="pais">País de Residência</label>
+                                    <input type="text" name="pais" disabled>
+                                </div>
+                            </div>
+    
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="estado">Estado</label>
+                                    <input type="text" name="estado" disabled>
+                                </div>
+                                <div class="field">
+                                    <label for="cidade">Cidade</label>
+                                    <input type="text" name="cidade" disabled>
+                                </div>
+                            </div>
+    
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="bairro">Bairro</label>
+                                    <input type="text" name="bairro" disabled>
+                                </div>
+                                <div class="field">
+                                    <label for="conjuge">Rua</label>
+                                    <input type="text" name="conjuge" disabled>
+                                </div>
+                            </div>
+    
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="numero">Número</label>
+                                    <input type="number" name="numero"
+                                </div>
+                                <div class="field">
+                                    <label for="complemento">Complemento</label>
+                                    <input type="text" name="complemento">
+                                </div>
+                            </div>
+    
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="celular">Celular</label>
+                                    <input type="number" name="numero">
+                                </div>
+                                <div class="field">
+                                    <label for="telefone">Telefone Comercial</label>
+                                    <input type="number" name="telefone">
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+
+                        <button type="submit">Salvar</button>
+                    </form>
+                </div>
+    
+
+                <div id="financeiros" data-tab-content>
+                    <form action="">
+                        <fieldset>
+                            <legend><h2>Receita</h2></legend>
+
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="salario">Salário</label>
+                                    <input type="text" name="salario">
+                                </div>
+                                <div class="field">
+                                    <label for="conjuge">Salário Cônjuge</label>
+                                    <input type="text" name="conjuge">
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="horas-extras">Horas Extras</label>
+                                    <input type="text" name="horas-extras">
+                                </div>
+                                <div class="field">
+                                    <label for="adicional">Adicional</label>
+                                    <input type="text" name="adicional" placeholder="Adicionar mais rendas">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend><h2>Despesas Essenciais</h2></legend>
+
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="aluguel">Aluguel</label>
+                                    <input type="text" name="aluguel">
+                                </div>
+                                <div class="field">
+                                    <label for="luz">Luz</label>
+                                    <input type="text" name="luz">
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="agua">Água</label>
+                                    <input type="text" name="agua">
+                                </div>
+                                <div class="field">
+                                    <label for="internet">Internet</label>
+                                    <input type="text" name="internet">
+                                </div>
+                            </div>
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="adicional2">Adicional</label>
+                                    <input type="text" name="adicional2" placeholder="Adicionar mais despesas">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend><h2>Despesas Não Essenciais</h2></legend>
+
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="academia">Academia</label>
+                                    <input type="text" name="academia">
+                                </div>
+                                <div class="field">
+                                    <label for="estudos">Estudos</label>
+                                    <input type="text" name="estudos">
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="celular">Celular (Mensalidade)</label>
+                                    <input type="text" name="celular">
+                                </div>
+                                <div class="field">
+                                    <label for="alimentacao">Alimentação (gastos extras)</label>
+                                    <input type="text" name="alimentacao">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend><h2>Reserva Mensal</h2></legend>
+
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="investido">Montante Investido</label>
+                                    <input type="text" name="investido">
+                                </div>
+                                <div class="field">
+                                    <label for="sobra">Sobra mensal</label>
+                                    <input type="text" name="sobra">
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="longo-prazo">Investimentos a Longo Prazo</label>
+                                    <input type="text" name="longo-prazo">
+                                </div>
+                                <div class="field">
+                                    <label for="sobra-porcentagem">Sobra Mensal (Em Porcentagem)</label>
+                                    <input type="text" name="sobra-porcentagem">
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="curto-prazo">Investimentos a Curto e Médio Prazo</label>
+                                    <input type="text" name="curto-prazo">
+                                </div>
+                                <div class="field">
+                                    <label for="emergencia">Quanto falta para a reserva de emergência</label>
+                                    <input type="text" name="emergencia">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <button type="submit">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
     
 </body>
 </html>
