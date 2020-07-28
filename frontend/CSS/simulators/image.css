@@ -1,0 +1,13 @@
+main .image{
+    width: 90%;
+    margin: auto;
+    
+    
+    margin-top: 15px;
+}
+
+main .image img{
+    width: 100%;
+
+    box-shadow: lightblue 3px 3px 7px 1px;
+}

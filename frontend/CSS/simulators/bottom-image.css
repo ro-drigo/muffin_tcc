@@ -1,0 +1,15 @@
+main .bottom-image{
+    width: 45%;
+    margin: auto;
+    margin-top: -25px;
+}
+
+main .bottom-image img{
+    width: 100%;
+}
+
+@media screen and (max-width: 1000px){
+    main .bottom-image{
+        display: none;
+    }
+}
