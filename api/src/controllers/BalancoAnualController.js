@@ -26,30 +26,44 @@ reservaBalanco = async (id) => {
 
         let separa = mes.split(" ")
 
-        if(separa[1] == "Jan"){
-            mes = "Janeiro/"+separa[3]
-        }else if(separa[1] == "Feb"){
-            mes = "Fevereiro/"+separa[3]
-        }else if(separa[1] == "Mar"){
-            mes = "Março/"+separa[3]
-        }else if(separa[1] == "Apr"){
-            mes = "Abril/"+separa[3]
-        }else if(separa[1] == "May"){
-            mes = "Maio/"+separa[3]
-        }else if(separa[1] == "Jun"){
-            mes = "Junho/"+separa[3]
-        }else if(separa[1] == "Jul"){
-            mes = "Julho/"+separa[3]
-        }else if(separa[1] == "Aug"){
-            mes = "Agosto/"+separa[3]
-        }else if(separa[1] == "Sep"){
-            mes = "Setembro/"+separa[3]
-        }else if(separa[1] == "Oct"){
-            mes = "Outubro/"+separa[3]
-        }else if(separa[1] == "Nov"){
-            mes = "Novembro/"+separa[3]
-        }else if(separa[1] == "Dec"){
-            mes = "Dezembro/"+separa[3]
+        //switch para nomear o mês e ano de acordo com a data
+        switch(separa[1]){
+            case "Jan":
+                mes = "Janeiro/"+separa[3]
+                break;
+            case "Feb":
+                mes = "Fevereiro/"+separa[3]
+                break;
+            case "Mar":
+                mes = "Março/"+separa[3]
+                break;
+            case "Apr":
+                mes = "Abril/"+separa[3]
+                break;
+            case "May":
+                mes = "Maio/"+separa[3]
+                break;
+            case "Jun":
+                mes = "Junho/"+separa[3]
+                break;
+            case "Jul":
+                mes = "Julho/"+separa[3]                    
+                break;
+            case "Aug":
+                mes = "Agosto/"+separa[3]
+                break;
+            case "Sep":
+                mes = "Setembro/"+separa[3]
+                break;
+            case "Oct":
+                mes = "Outubro/"+separa[3]                    
+                break;
+            case "Nov":
+                mes = "Novembro/"+separa[3]
+                break;
+            case "Dec":
+                mes = "Dezembro/"+separa[3]
+                break;
         }
 
         obj.push({"mes": mes, "reserva mensal": soma}) 
@@ -87,30 +101,44 @@ economizouBalanco = async (id) => {
 
             let separa = mes.split(" ")
 
-            if(separa[1] == "Jan"){
-                mes = "Janeiro/"+separa[3]
-            }else if(separa[1] == "Feb"){
-                mes = "Fevereiro/"+separa[3]
-            }else if(separa[1] == "Mar"){
-                mes = "Março/"+separa[3]
-            }else if(separa[1] == "Apr"){
-                mes = "Abril/"+separa[3]
-            }else if(separa[1] == "May"){
-                mes = "Maio/"+separa[3]
-            }else if(separa[1] == "Jun"){
-                mes = "Junho/"+separa[3]
-            }else if(separa[1] == "Jul"){
-                mes = "Julho/"+separa[3]
-            }else if(separa[1] == "Aug"){
-                mes = "Agosto/"+separa[3]
-            }else if(separa[1] == "Sep"){
-                mes = "Setembro/"+separa[3]
-            }else if(separa[1] == "Oct"){
-                mes = "Outubro/"+separa[3]
-            }else if(separa[1] == "Nov"){
-                mes = "Novembro/"+separa[3]
-            }else if(separa[1] == "Dec"){
-                mes = "Dezembro/"+separa[3]
+            //switch para nomear o mês e ano de acordo com a data
+            switch(separa[1]){
+                case "Jan":
+                    mes = "Janeiro/"+separa[3]
+                    break;
+                case "Feb":
+                    mes = "Fevereiro/"+separa[3]
+                    break;
+                case "Mar":
+                    mes = "Março/"+separa[3]
+                    break;
+                case "Apr":
+                    mes = "Abril/"+separa[3]
+                    break;
+                case "May":
+                    mes = "Maio/"+separa[3]
+                    break;
+                case "Jun":
+                    mes = "Junho/"+separa[3]
+                    break;
+                case "Jul":
+                    mes = "Julho/"+separa[3]                    
+                    break;
+                case "Aug":
+                    mes = "Agosto/"+separa[3]
+                    break;
+                case "Sep":
+                    mes = "Setembro/"+separa[3]
+                    break;
+                case "Oct":
+                    mes = "Outubro/"+separa[3]                    
+                    break;
+                case "Nov":
+                    mes = "Novembro/"+separa[3]
+                    break;
+                case "Dec":
+                    mes = "Dezembro/"+separa[3]
+                    break;
             }
 
             //colocando os valores dentro do array de objetos
@@ -125,7 +153,6 @@ economizouBalanco = async (id) => {
     //Como é o primeiro, ele não economizou, pois não tem orçamento antes para calculo.
     obj.push({ "economizou": "---", "mes":  mes})
 
-    console.log(obj)
     return obj
 }
 
