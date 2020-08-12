@@ -82,7 +82,7 @@ economizouBalanco = async (id) => {
     //comando para calcular o total da reserva mensal
     const meses = await knex('orcamento').where('id_pes', id).select('date_orc', 'gasto_total')
 
-    let conta = meses.length //4
+    let conta = meses.length
     let obj = []
 
     if(conta == 0)
@@ -156,6 +156,78 @@ economizouBalanco = async (id) => {
     return obj
 }
 
+guardouBalanco = async (id) => {
+    const meses = await knex('orcamento').where('id_pes', id).select('date_orc', 'gasto_total', 'renda_orc')
+
+    //conta quantos meses tem
+    let conta = meses.length
+
+    //array onde estarão os objetos para retorno
+    let obj = []
+
+    if(conta == 0)
+        return 0
+    
+    while(conta > 0){
+
+        let guardou = meses[conta-1].renda_orc
+
+        //pegamos o mês que estamos usando como referência
+        let mes = meses[conta-1].date_orc
+
+        //salvar tudo em um objeto para usar depois
+        mes = mes.toString()
+
+        let separa = mes.split(" ")
+
+        //switch para nomear o mês e ano de acordo com a data
+        switch(separa[1]){
+            case "Jan":
+                mes = "Janeiro/"+separa[3]
+                break;
+            case "Feb":
+                mes = "Fevereiro/"+separa[3]
+                break;
+            case "Mar":
+                mes = "Março/"+separa[3]
+                break;
+            case "Apr":
+                mes = "Abril/"+separa[3]
+                break;
+            case "May":
+                mes = "Maio/"+separa[3]
+                break;
+            case "Jun":
+                mes = "Junho/"+separa[3]
+                break;
+            case "Jul":
+                mes = "Julho/"+separa[3]                    
+                break;
+            case "Aug":
+                mes = "Agosto/"+separa[3]
+                break;
+            case "Sep":
+                mes = "Setembro/"+separa[3]
+                break;
+            case "Oct":
+                mes = "Outubro/"+separa[3]                    
+                break;
+            case "Nov":
+                mes = "Novembro/"+separa[3]
+                break;
+            case "Dec":
+                mes = "Dezembro/"+separa[3]
+                break;
+        }
+
+        obj.push({ "guardou": guardou, "mes":  mes})
+            
+        conta--
+    }
+
+    console.log(obj)
+}
+
 module.exports = {
     //listar balanço anual
     async index(req, res, next) {
@@ -164,10 +236,11 @@ module.exports = {
 
             let reservaMensalBalanco = await reservaBalanco(id)
             let economizouBalancoAnual = await economizouBalanco(id)
+            let guardouBalancoAnual = await guardouBalanco(id);
             
             //validando caso o usuario n tenha cadastro de orçamento
-            if(reservaMensalBalanco == 0 || economizouBalancoAnual == 0)
-                res.json({ error: "usuário não possui orçamento cadastrado" })
+            if(reservaMensalBalanco == 0 || economizouBalancoAnual == 0 || guardouBalancoAnual == 0)
+                res.status(400).json({ error: "usuário não possui orçamento cadastrado" })
 
 
             res.json({
