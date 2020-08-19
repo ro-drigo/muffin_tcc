@@ -142,7 +142,7 @@ economizouBalanco = async (id) => {
             }
 
             //colocando os valores dentro do array de objetos
-            obj.push({ "economizou": economizou, "mes":  mes})
+            obj.push({ "mes":  mes, "economizou": economizou })
             
         }
         //diminuímos 1 na conta para fazer o cáculo com o anterior
@@ -151,7 +151,7 @@ economizouBalanco = async (id) => {
 
     //esse push é para inserir o quanto o usuário economizou no primeiro orçamento.
     //Como é o primeiro, ele não economizou, pois não tem orçamento antes para calculo.
-    obj.push({ "economizou": "---", "mes":  mes})
+    obj.push({ "mes":  mes, "economizou": "---" })
 
     return obj
 }
@@ -220,12 +220,12 @@ guardouBalanco = async (id) => {
                 break;
         }
 
-        obj.push({ "guardou": guardou, "mes":  mes})
+        obj.push({ "mes":  mes, "guardou": parseInt(guardou) })
             
         conta--
     }
 
-    console.log(obj)
+    return obj
 }
 
 module.exports = {
@@ -245,7 +245,8 @@ module.exports = {
 
             res.json({
                 reserva_mensal_balanco: reservaMensalBalanco,
-                economizou_balanco: economizouBalancoAnual
+                economizou_balanco: economizouBalancoAnual,
+                guardou_balanco: guardouBalancoAnual
             })
 
         }catch (error) {
