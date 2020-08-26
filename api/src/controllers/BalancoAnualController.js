@@ -1,6 +1,7 @@
 //importando o knex para usar
 const knex = require('../database')
 
+
 reservaBalanco = async (id) => {
     //comando para calcular o total da reserva mensal
     const meses = await knex('orcamento').where('id_pes', id).select('date_orc', 'reserva_mensal')
