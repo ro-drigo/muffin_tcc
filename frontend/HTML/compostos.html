@@ -19,7 +19,7 @@
 
     <script>
         async function requestPost(){
-          const request = await axios.post('http://c5ba2902b859.ngrok.io/juroscompostos',
+          const request = await axios.post('http://localhost:3001/juroscompostos',
                                             {
                                                 investimento: document.getElementById('valor-agora').value,
                                                 aplicacao: document.getElementById('aplicacao').value,
@@ -78,7 +78,6 @@
         </div>
 
         <div class="container">
-            <form>     
                 <h2>Juros Compostos</h2>           
                 <fieldset>  
                     <div class="field-group">
@@ -104,7 +103,6 @@
                     </div>
                 </fieldset>
                 <button type="submit" onclick="requestPost()">Calcular</button>
-            </form>
 
             <h3>Resultado:</h3>
         </div>
