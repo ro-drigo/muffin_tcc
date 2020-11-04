@@ -1,0 +1,45 @@
+main *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main .container{
+    width: 75%;
+    margin: auto;
+    background-color: white;
+    box-shadow: lightblue 3px 3px 10px 1px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding: 25px 50px 20px 50px;
+}
+
+main .container h3{
+    color: rgb(158, 83, 228);
+    margin-top: 18px;
+
+    font-size: 22px;
+}
+
+@media all and (max-width: 900px){
+    main .container{
+        width: 80%;  
+        padding: 20px 50px 20px 40px;
+    }
+}
+
+@media all and (max-width: 750px){
+    main .container{
+        width: 100%;  
+    }
+}
+
+@media all and (max-width: 600px){
+    main .container{
+        width: 100%;  
+        box-shadow: 0px 10px 10px 7px;
+        margin-bottom: 0px;
+
+        padding: 15px;
+    }
+}

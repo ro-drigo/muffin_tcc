@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../CSS/profile/nav-profile.css">
+    <link rel="stylesheet" href="../CSS/composto/container.css">
+    <link rel="stylesheet" href="../CSS/multi/titulo.css">
+    <link rel="stylesheet" href="../CSS/composto/form.css">
+    <link rel="stylesheet" href="../CSS/comparators/bottom-image.css">
+    <link rel="stylesheet" href="../CSS/comparators/sliders.css">
+    <link rel="stylesheet" href="../CSS/comparators/slidertext.css">
+    <link rel="stylesheet" href="../CSS/comparators/chartsize.css">
+    <link rel="stylesheet" href="../CSS/comparators/results.css">
+    
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', '');
+      data.addColumn('number', 'Guardou');
+      data.addColumn('number', 'Economizou');
+      data.addColumn('number', 'Reserva');
+
+      data.addRows([
+        ['Jan',  100, 200, 20],
+        ['Fev',  150, 150, 30],
+        ['Mar',  120,   50, 25],
+        ['Abr',  80, 20, 10],
+        ['Mai',  400, 40, 10],
+        ['Jun',   8, 50,  77],
+        ['Jul',   7, 50,  9],
+        ['Ago',  12, 200, 10],
+        ['Set',  16, 350, 14],
+        ['Out', 12.8, 90, 11],
+        ['Nov',  5,  79,  4],
+        ['Dez',  6,  84,  5]
+      ]);
+
+      var options = {
+      };
+
+      var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+      chart.draw(data, options);
+    }
+  </script>
+
+    <title>Muffin</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo">MUFFIN</div>
+            <label for="drop" class="toggle" id="main-toggle">
+                <span class="nav-icon"></span>
+            </label>
+            <input type="checkbox" id="drop">
+            <ul class="menu">
+                <li>
+                    <a href="simulators.html">Simuladores</a>
+                </li>
+    
+                <li>
+                    <label for="drop-3" class="toggle">Aprenda +</label>
+                    <a href="#">Aprenda</a>
+                    <input type="checkbox" id="drop-3">
+                    <ul>
+                        <li><a href="youtube.html">YouTube</a></li>
+                        <li><a href="books.html">Livros</a></li>
+                        <li><a href="sites.html">Sites</a></li>
+                    </ul>
+                </li>
+    
+                <li>
+                    <a href="doubts.html">Duvidas</a>
+                </li>
+    
+                <li>
+                    <label for="drop-5" class="toggle">Perfil +</label>
+                    <a href="#">Perfil</a>
+                    <input type="checkbox" id="drop-5">
+                    <ul>
+                        <li><a href="profile.html">Minha conta</a></li>
+                        <li><a href="#">Gerenciamento</a></li>
+                        <li><a href="index.html">Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="texto">
+            <h1>Balanço Anual</h1>
+        </div>
+
+        <div class="container">
+            <form action="">   
+                <h2>Gerenciamento</h2>                           
+            </form>
+
+            <div class="testar" id="testando">
+                <div id="line_top_x" class="chart" style="width: 95%;"></div>
+            </div>
+
+            
+        </div>
+        
+
+        <script src="../JS/simulators/main.js"></script>
+    </main>
+</body>
+</html>

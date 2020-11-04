@@ -1,0 +1,32 @@
+main .container .resultadosDiv{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+main .container .espacamento{
+    margin-top: 25px;
+}
+
+main .container .resultadosDiv .resultadoIndividual{
+    width: 48%;
+    margin: auto;
+}
+
+main .container .resultadosDiv .resultadoIndividual p{
+    font-size: 18px;
+    color: purple;
+    font-weight: bold;
+}
+
+@media all and (max-width: 800px){
+    main .container .resultadosDiv{
+        display: inline;
+    }
+
+    main .container .resultadosDiv .resultadoIndividual{
+        width: 100%;
+        margin-top: 10px;
+    }
+}

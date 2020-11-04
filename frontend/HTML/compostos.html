@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../CSS/profile/nav-profile.css">
+
+    <link rel="stylesheet" href="../CSS/composto/container.css">
+    <link rel="stylesheet" href="../CSS/multi/titulo.css">
+
+    <link rel="stylesheet" href="../CSS/composto/form.css">
+
+
+    <title>Juros Compostos</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo">MUFFIN</div>
+            <label for="drop" class="toggle" id="main-toggle">
+                <span class="nav-icon"></span>
+            </label>
+            <input type="checkbox" id="drop">
+            <ul class="menu">
+                <li>
+                    <a href="simulators.html">Simuladores</a>
+                </li>
+    
+                <li>
+                    <label for="drop-3" class="toggle">Aprenda +</label>
+                    <a href="#">Aprenda</a>
+                    <input type="checkbox" id="drop-3">
+                    <ul>
+                        <li><a href="youtube.html">YouTube</a></li>
+                        <li><a href="books.html">Livros</a></li>
+                        <li><a href="sites.html">Sites</a></li>
+                    </ul>
+                </li>
+    
+                <li>
+                    <a href="doubts.html">Duvidas</a>
+                </li>
+    
+                <li>
+                    <label for="drop-5" class="toggle">Perfil +</label>
+                    <a href="#">Perfil</a>
+                    <input type="checkbox" id="drop-5">
+                    <ul>
+                        <li><a href="profile.html">Minha conta</a></li>
+                        <li><a href="management.html">Gerenciamento</a></li>
+                        <li><a href="index.html">Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="texto">
+            <h1>Simuladores de investimento online</h1>
+        </div>
+
+        <div class="container">
+            <form action="">     
+                <h2>Juros Compostos</h2>           
+                <fieldset>  
+                    <div class="field-group">
+                        <div class="field">
+                            <label for="valor-agora">Quanto tem para investir agora?</label>
+                            <input type="number" name="valor-agora">
+                        </div>
+                        <div class="field">
+                            <label for="aplicacao">Aplicação Mensal</label>
+                            <input type="number" name="aplicacao">
+                        </div>
+                    </div>
+    
+                    <div class="field-group">
+                        <div class="field">
+                            <label for="tempo">Por quanto tempo?</label>
+                            <input type="number" name="tempo">
+                        </div>
+                        <div class="field">
+                            <label for="rentabilidade">Rentabilidade</label>
+                            <input type="number" name="rentabilidade">
+                        </div>
+                    </div>
+                </fieldset>
+                <button type="submit">Calcular</button>
+            </form>
+
+            <h3>Resultado:</h3>
+        </div>
+    </main>
+</body>
+</html>

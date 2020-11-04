@@ -5,7 +5,7 @@ main *{
 }
 
 main .container{
-    width: 90%;
+    width: 85%;
     margin: auto;
     background-color: white;
     box-shadow: lightblue 3px 3px 10px 1px;
@@ -24,7 +24,7 @@ main .container .row{
 }
 
 main .container .row .card{
-    width: 20%;
+    width: 25%;
     background: #fff;
     border: 1px solid #ccc;
     margin-bottom: 50px;
@@ -57,7 +57,6 @@ main .container .row .card .card-header{
 
 main .container .row .card .card-body{
     padding: 20px 20px;
-    text-align: center;
     font-size: 18px;
 }
 

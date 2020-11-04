@@ -1,0 +1,54 @@
+main .container .sliderField{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    padding: 2px;
+}
+
+main .container .sliderField .sliderContainer{
+    width: 49%;
+    margin: auto;
+}
+
+main .container .sliderField .sliderContainer .slider{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: rgb(158, 83, 228);
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    outline: 0;
+}
+
+main .container .sliderField .sliderContainer .slider:hover{
+    opacity: 1;
+}
+
+main .container .sliderField .sliderContainer .slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgb(158, 83, 228);
+    cursor: pointer;
+}
+
+main .container .sliderField .sliderContainer .slider::-moz-range-thumb{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgb(158, 83, 228);
+    cursor: pointer;
+}
+
+@media all and (max-width: 800px){
+    main .container .sliderField{
+        display: inline;
+    }
+
+    main .container .sliderField .sliderContainer{
+        width: 98%;
+    }
+}

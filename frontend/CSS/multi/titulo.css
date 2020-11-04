@@ -1,0 +1,33 @@
+main .texto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 25vh;
+    background: linear-gradient(to right, rgb(130, 196, 218), lightblue, lightgreen);
+    padding: 25px;
+    color: white;
+    pointer-events: none;
+}
+
+main .texto h1{
+    font-size: 50px;
+}
+
+@media all and (max-width: 1000px){
+    main .texto h1{
+        font-size: 40px;
+    }
+}
+
+
+@media all and (max-width: 750px){
+    main .texto{
+        height: 25vh;
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+    main .texto h1{
+        font-size: 30px;
+    }  
+}

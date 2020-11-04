@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Perfil</title>
+    <title>Muffin</title>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../CSS/profile/nav-profile.css">
     <link rel="stylesheet" href="../CSS/profile/tabs.css">
     <link rel="stylesheet" href="../CSS/profile/tabs-forms.css">
+    <link rel="stylesheet" href="../CSS/profile/inputarquivo.css">
+    <link rel="stylesheet" href="../CSS/multi/titulo.css">
 
     <script src="../JS/profile/tabs.js" defer></script>
 </head>
@@ -23,22 +27,7 @@
             <input type="checkbox" id="drop">
             <ul class="menu">
                 <li>
-                    <label for="drop-1" class="toggle">Simuladores +</label>
-                    <a href="#">Simuladores</a>
-                    <input type="checkbox" id="drop-1">
-                    <ul>
-                        <li><a href="#">Simulador 1</a></li>
-                        <li><a href="#">Simulador 2</a></li>
-                        <li>
-                            <label for="drop-2" class="toggle">Juros +</label>
-                            <a href="#">Juros</a>
-                            <input type="checkbox" id="drop-2">
-                            <ul>
-                                <li><a href="#">Simples</a></li>
-                                <li><a href="#">Compostos</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <a href="simulators.html">Simuladores</a>
                 </li>
     
                 <li>
@@ -46,22 +35,14 @@
                     <a href="#">Aprenda</a>
                     <input type="checkbox" id="drop-3">
                     <ul>
-                        <li><a href="#">Aprenda 1</a></li>
-                        <li><a href="#">Aprenda 2</a></li>
-                        <li><a href="#">Aprenda 3</a></li>
-                        <li><a href="#">Aprenda 4</a></li>
+                        <li><a href="youtube.html">YouTube</a></li>
+                        <li><a href="books.html">Livros</a></li>
+                        <li><a href="sites.html">Sites</a></li>
                     </ul>
                 </li>
     
                 <li>
-                    <label for="drop-4" class="toggle">Duvidas +</label>
-                    <a href="#">Duvidas</a>
-                    <input type="checkbox" id="drop-4">
-                    <ul>
-                        <li><a href="#">Duvidas 1</a></li>
-                        <li><a href="#">Duvidas 2</a></li>
-                        <li><a href="#">Duvidas 3</a></li>
-                    </ul>
+                    <a href="doubts.html">Duvidas</a>
                 </li>
     
                 <li>
@@ -70,15 +51,19 @@
                     <input type="checkbox" id="drop-5">
                     <ul>
                         <li><a href="#">Minha conta</a></li>
-                        <li><a href="#">Gerenciamento</a></li>
-                        <li><a href="#">Sair</a></li>
+                        <li><a href="management.html">Gerenciamento</a></li>
+                        <li><a href="index.html">Sair</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </header>
-
+    
     <main>
+        <div class="texto">
+            <h1>Minha Conta</h1>
+        </div>
+        
         <div class="tab-div">
             <ul class="tabs">
                 <li data-tab-target="#pessoais" class="active tab">Dados Pessoais</li>
@@ -90,10 +75,17 @@
                     <form action=""> 
                         <div class="foto">
                             <img src="../IMAGENS/perfil-alterar.jpeg" alt="Falha em carregar imagem">
-                            <input type="file" name="nome">
+                            <input type="file" id="file" accept="image/*">
+                            <label for="file">
+                                <span class="material-icons">
+                                    add_photo_alternate
+                                </span> &nbsp;
+                                Escolha uma foto
+                            </label>
                         </div>
                         
                         <fieldset>
+                            <legend><h2>Informações Pessoais</h2></legend>
                             <div class="field-group">
                                 <div class="field">
                                     <label for="nome">Nome Completo</label>
@@ -115,7 +107,21 @@
                                     <input type="date" name="nascimento">
                                 </div>
                             </div>
+
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="celular">Celular</label>
+                                    <input type="number" name="numero">
+                                </div>
+                                <div class="field">
+                                    <label for="telefone">Telefone Comercial</label>
+                                    <input type="number" name="telefone">
+                                </div>
+                            </div>
+                        </fieldset>
     
+                        <fieldset>
+                            <legend><h2>Endereço</h2></legend>
                             <div class="field-group">
                                 <div class="field">
                                     <label for="cep">CEP</label>
@@ -123,29 +129,29 @@
                                 </div>
                                 <div class="field">
                                     <label for="pais">País de Residência</label>
-                                    <input type="text" name="pais" disabled>
+                                    <input type="text" name="pais" class="bloqueado" disabled>
                                 </div>
                             </div>
     
                             <div class="field-group">
                                 <div class="field">
                                     <label for="estado">Estado</label>
-                                    <input type="text" name="estado" disabled>
+                                    <input type="text" name="estado" class="bloqueado" disabled>
                                 </div>
                                 <div class="field">
                                     <label for="cidade">Cidade</label>
-                                    <input type="text" name="cidade" disabled>
+                                    <input type="text" name="cidade" class="bloqueado" disabled>
                                 </div>
                             </div>
     
                             <div class="field-group">
                                 <div class="field">
                                     <label for="bairro">Bairro</label>
-                                    <input type="text" name="bairro" disabled>
+                                    <input type="text" name="bairro" class="bloqueado" disabled>
                                 </div>
                                 <div class="field">
                                     <label for="conjuge">Rua</label>
-                                    <input type="text" name="conjuge" disabled>
+                                    <input type="text" name="conjuge" class="bloqueado" disabled>
                                 </div>
                             </div>
     
@@ -159,18 +165,8 @@
                                     <input type="text" name="complemento">
                                 </div>
                             </div>
-    
-                            <div class="field-group">
-                                <div class="field">
-                                    <label for="celular">Celular</label>
-                                    <input type="number" name="numero">
-                                </div>
-                                <div class="field">
-                                    <label for="telefone">Telefone Comercial</label>
-                                    <input type="number" name="telefone">
-                                </div>
-                            </div>
                         </fieldset>
+                            
                         
 
                         <button type="submit">Salvar</button>

@@ -1,5 +1,5 @@
 main .image{
-    width: 90%;
+    width: 70%;
     margin: auto;
     
     
@@ -10,4 +10,10 @@ main .image img{
     width: 100%;
 
     box-shadow: lightblue 3px 3px 7px 1px;
+}
+
+@media all and (max-width: 850px){
+    main .image{
+        width: 100%;
+    }
 }

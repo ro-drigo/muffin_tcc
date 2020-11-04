@@ -1,10 +1,17 @@
 form fieldset{
     border: lightgrey 1px solid;
+    padding: 10px;
 }
 
-form fieldset legend h2{
+form h2{
+    width: 100%;
+   
     color: rgb(158, 83, 228);
     font-weight: bold;
+    text-align: center;
+    font-size: 40px;
+
+    margin-bottom: 20px;
 }
 
 form .field-group{
@@ -27,10 +34,6 @@ form .field-group input{
 
     outline-color: gray;
 
-}
-
-form .field-group .field .bloqueado{
-    background-color: #e1e1e4;
 }
 
 form label{
@@ -76,7 +79,7 @@ form img{
 
     margin-bottom: 10px;
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 750px){
     form .field-group{
         display: inline;
     }
@@ -87,6 +90,25 @@ form img{
 
     form label{
         margin-top: 20px;
-        font-size: 14px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    form .field-group{
+        display: inline;
+    }
+
+    form .field-group .field + .field{
+        margin-left: 0px;
+    }
+
+    form label{
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    form h2{
+        font-size: 30px;
     }
 }

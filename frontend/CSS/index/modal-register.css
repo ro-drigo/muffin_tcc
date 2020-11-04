@@ -94,3 +94,10 @@
     background-color: rgb(87, 87, 233);
     transition: 750ms;
 }
+
+
+@media screen and (max-width: 405px){
+    .modal-register-container{
+        width: 100%;
+    }
+}

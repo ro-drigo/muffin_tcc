@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../CSS/profile/nav-profile.css">
+    <link rel="stylesheet" href="../CSS/composto/container.css">
+    <link rel="stylesheet" href="../CSS/multi/titulo.css">
+    <link rel="stylesheet" href="../CSS/composto/form.css">
+    <link rel="stylesheet" href="../CSS/comparators/bottom-image.css">
+    <link rel="stylesheet" href="../CSS/comparators/sliders.css">
+    <link rel="stylesheet" href="../CSS/comparators/slidertext.css">
+    <link rel="stylesheet" href="../CSS/comparators/chartsize.css">
+    <link rel="stylesheet" href="../CSS/comparators/results.css">
+    
+
+
+    
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Resultados');
+        data.addRows([
+          ['Poupança', 12642.94],
+          ['Tesouro IPCA+ 2045', 11806.73],
+          ['Tesouro IPCA+ 2035', 11926.60],
+          ['Tesouro Prefixado 2026', 12127.88],
+
+        ]);
+
+        // Set chart options
+        var options = {
+            
+        }
+                                              
+        // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div')); 
+            chart.draw(data, options); 
+      }
+    </script>
+
+    <title>Muffin</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo">MUFFIN</div>
+            
+            <label for="drop" class="toggle" id="main-toggle">
+                <span class="nav-icon"></span>
+            </label>
+            <input type="checkbox" id="drop">
+            <ul class="menu">
+                <li>
+                    <a href="simulators.html">Simuladores</a>
+                </li>
+    
+                <li>
+                    <label for="drop-3" class="toggle">Aprenda +</label>
+                    <a href="#">Aprenda</a>
+                    <input type="checkbox" id="drop-3">
+                    <ul>
+                        <li><a href="youtube.html">YouTube</a></li>
+                        <li><a href="books.html">Livros</a></li>
+                        <li><a href="sites.html">Sites</a></li>
+                    </ul>
+                </li>
+    
+                <li>
+                    <a href="doubts.html">Duvidas</a>
+                </li>
+    
+                <li>
+                    <label for="drop-5" class="toggle">Perfil +</label>
+                    <a href="#">Perfil</a>
+                    <input type="checkbox" id="drop-5">
+                    <ul>
+                        <li><a href="profile.html">Minha conta</a></li>
+                        <li><a href="management.html">Gerenciamento</a></li>
+                        <li><a href="index.html">Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="texto">
+            <h1>Simuladores de Investimento online</h1>
+        </div>
+
+        <div class="container">
+            <form action="">   
+                <h2>Comparadores</h2>                           
+            </form>
+
+            <div class="sliderField">
+                <div class="sliderContainer">
+                    <p class="titleSlider">Invista</p>
+                    <p class="textSlider">R$: <span id="moneyValue"></span></p>
+                    <input type="range" min="100" max="10000" value="100" step="5" id="moneySlider" class="slider">
+                </div>
+                <div class="sliderContainer">
+                    <p class="titleSlider">Durante</p>
+                    <p class="textSlider"><span id="timeValue"></span> ano(s)</p>
+                    <input type="range" min="1" max="5" value="1" id="yearsSlider" class="slider">
+                </div>
+            </div>
+            <div class="testar" id="testando">
+                <div id="chart_div" class="chart" style="width: 95%; height: 45%"></div>
+            </div>
+
+            <div class="resultadosDiv espacamento">
+                <div class="resultadoIndividual">
+                    <p>Poupança: <span></span></p>
+                </div>
+                <div class="resultadoIndividual">
+                    <p>Tesouro IPCA+ 2045: <span></span></p>
+                </div>
+            </div>
+            <div class="resultadosDiv">
+                <div class="resultadoIndividual">
+                    <p>Tesouro IPCA+ 2035: <span></span></p>
+                </div>
+                <div class="resultadoIndividual">
+                    <p>Tesouro Prefixado 2026: <span></span></p>
+                </div>
+            </div>
+            
+            
+            <div class="bottom-image">
+                <img src="../IMAGENS/cofrinho.jpeg" alt="Não foi possível carregar a imagem">
+            </div>
+        </div>
+        
+
+        <script src="../JS/simulators/main.js"></script>
+    </main>
+</body>
+</html>

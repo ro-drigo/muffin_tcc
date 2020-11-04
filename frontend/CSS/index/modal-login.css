@@ -108,3 +108,10 @@
     color: black;
     font-weight: 400;
 }
+
+
+@media screen and (max-width: 405px){
+    .modal-container{
+        width: 100%;
+    }
+}

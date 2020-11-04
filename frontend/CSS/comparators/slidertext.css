@@ -1,0 +1,11 @@
+main .container .sliderField .sliderContainer .textSlider{
+    color: rgb(158, 83, 228);
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+main .container .sliderField .sliderContainer .titleSlider{
+    opacity: 0.6;
+    font-size: 18px;
+    margin-bottom: 2px;
+}

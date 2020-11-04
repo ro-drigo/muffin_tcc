@@ -1,0 +1,15 @@
+main .bottom-image{
+    width: 40%;
+    margin: auto;
+}
+
+main .bottom-image img{
+    width: 100%;
+}
+
+@media all and (max-width: 800px){
+    main .bottom-image{
+        width: 60%;
+        margin-top: 40px;
+    }
+}

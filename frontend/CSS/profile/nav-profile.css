@@ -17,6 +17,7 @@ header{
 
 a{
     color: black;
+    font-weight: 600;
 }
 
 .toggle, [id^=drop]{
@@ -29,6 +30,7 @@ a{
     float: left;
     font-size: 20px;
     line-height: 60px;
+    pointer-events: none;
 }
 
 #main-toggle{

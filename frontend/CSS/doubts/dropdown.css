@@ -1,0 +1,93 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+}
+
+main .container section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .container section .conteudo{
+    width: 80%;
+    max-width: 80rem;
+    margin: 0 auto;
+
+}
+
+main .container section .conteudo .accordion-item{
+    background: linear-gradient(to right, rgb(118, 118, 190), lightblue);
+    border-radius: .4rem;
+    margin-bottom: 1rem;
+    padding: 6px;
+    box-shadow: lightblue 4px 4px 5px 1px;
+    border:purple 2px solid;
+    
+}
+
+main .container section .conteudo .accordion-item .accordion-link{
+    font-size: 1.6rem;
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+
+}
+
+main .container section .conteudo .accordion-item .accordion-link i{
+    padding: .1rem;
+}
+
+
+main .container section .conteudo .accordion-item .resposta{
+    max-height: 0;
+    overflow: hidden;
+    position: relative;
+    background-color: #FFFAF0;
+    font-size: 1.2rem;
+    transition: max-height 500ms;
+}
+
+main .container section .conteudo .accordion-item .resposta::before{
+    content: "";
+    position: absolute;
+    width: .5rem;
+    height: 103%;
+    background-color: #FAEBD7;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+main .container section .conteudo .accordion-item .resposta p{
+    padding: 1rem;
+}
+
+main .container section .conteudo .accordion-item:target .resposta{
+    max-height: 20rem;
+}
+
+main .container section .conteudo .accordion-item:target .accordion-link{
+    pointer-events: none;
+}
+
+main .container section .conteudo .accordion-item:target .accordion-link .ion-md-add{
+    display: none;
+}
+
+@media screen and (max-width: 1100px){
+    main .container section .conteudo{
+        width: 100%;
+    }
+}

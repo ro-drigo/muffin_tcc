@@ -67,7 +67,7 @@ main *{
     transition: 750ms;
 }
 
-@media screen and (max-width: 2600px){
+@media screen and (min-width: 2301px){
     .content .text h1{
         font-size: 70px;
     }
