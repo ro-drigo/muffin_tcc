@@ -14,6 +14,21 @@
 
 
     <title>Juros Compostos</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        async function requestPost(){
+          const request = await axios.post('http://c5ba2902b859.ngrok.io/juroscompostos',
+                                            {
+                                                investimento: document.getElementById('valor-agora').value,
+                                                aplicacao: document.getElementById('aplicacao').value,
+                                                tempo: document.getElementById('tempo').value,
+                                                rentabilidade: document.getElementById('rentabilidade').value
+                                            })
+          console.log(request.data)
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -63,32 +78,32 @@
         </div>
 
         <div class="container">
-            <form action="">     
+            <form>     
                 <h2>Juros Compostos</h2>           
                 <fieldset>  
                     <div class="field-group">
                         <div class="field">
                             <label for="valor-agora">Quanto tem para investir agora?</label>
-                            <input type="number" name="valor-agora">
+                            <input type="number" name="valor-agora" id="valor-agora">
                         </div>
                         <div class="field">
                             <label for="aplicacao">Aplicação Mensal</label>
-                            <input type="number" name="aplicacao">
+                            <input type="number" name="aplicacao" id="aplicacao">
                         </div>
                     </div>
     
                     <div class="field-group">
                         <div class="field">
                             <label for="tempo">Por quanto tempo?</label>
-                            <input type="number" name="tempo">
+                            <input type="number" name="tempo" id="tempo">
                         </div>
                         <div class="field">
                             <label for="rentabilidade">Rentabilidade</label>
-                            <input type="number" name="rentabilidade">
+                            <input type="number" name="rentabilidade" id="rentabilidade">
                         </div>
                     </div>
                 </fieldset>
-                <button type="submit">Calcular</button>
+                <button type="submit" onclick="requestPost()">Calcular</button>
             </form>
 
             <h3>Resultado:</h3>
