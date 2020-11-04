@@ -61,7 +61,7 @@ module.exports = {
             let montante = parseFloat(capital) * parseFloat(v3);
             
             //montante formatado para o número não retornar tão extenso
-            let montanteFormatado = montante.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            let montanteFormatado = montante
 
             res.json(montanteFormatado)
         } catch (error) {
@@ -130,7 +130,7 @@ module.exports = {
 
             var p4 = parseFloat(p3) + parseFloat(investimento);
 
-            const fp2 = p4.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            const fp2 = p4;
 
 
             //Calculos de Tesouro IPCA 2045
@@ -140,7 +140,7 @@ module.exports = {
             var t3 = parseFloat(t2) * parseFloat(investimento);
             var t4 = parseFloat(t3) + parseFloat(investimento); 
 
-            const ft = t4.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            const ft = t4;
 
             //Calculos de Tesouro IPCA 2035
 
@@ -149,7 +149,7 @@ module.exports = {
             var i3 = parseFloat(i2) * parseFloat(investimento);
             var i4 = parseFloat(i3) + parseFloat(investimento); 
 
-            const fi = i4.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            const fi = i4;
 
 
             //Calculos de Tesouro PREFIXADO
@@ -159,13 +159,13 @@ module.exports = {
             var tp3 = parseFloat(tp2) * parseFloat(investimento);
             var tp4 = parseFloat(tp3) + parseFloat(investimento); 
 
-            const ftp = tp4.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            const ftp = tp4;
 
             res.json({
-                "Valor tesouro prefixado 2026": ftp,
-                "Valor tesouro ipca 2045": ft,
-                "Valor tesouro ipca 2035": fi,
-                "Valor poupança": fp2
+                "Valor_tesouro_prefixado_2026": ftp,
+                "Valor_tesouro_ipca_2045": ft,
+                "Valor_tesouro_ipca_2035": fi,
+                "Valor_poupança": fp2
             });  
 
         } catch (error) {
