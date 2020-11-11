@@ -114,7 +114,7 @@ module.exports = {
             let vemail = await verificaEmail(email)
 
             if(vemail == true){
-                return res.send("Email já existe")
+                return res.status(202).send("Email já existe")
             }
                 
 
@@ -272,8 +272,9 @@ module.exports = {
         user[0].pass_pes = undefined
 
         res.send({ 
-            user, 
-            token: generateToken({ id: user[0].id_pes }) 
+            //user, 
+            token: generateToken({ id: user[0].id_pes }),
+            id: user[0].id_pes
         })
     }
 }
