@@ -67,7 +67,7 @@ reservaBalanco = async (id) => {
                 break;
         }
 
-        obj.push({"mes": mes, "reserva mensal": soma}) 
+        obj.push({"mes": mes, "reserva_mensal": soma}) 
              
         //resetar o cálculo da soma
         soma = 0
@@ -152,7 +152,7 @@ economizouBalanco = async (id) => {
 
     //esse push é para inserir o quanto o usuário economizou no primeiro orçamento.
     //Como é o primeiro, ele não economizou, pois não tem orçamento antes para calculo.
-    obj.push({ "mes":  mes, "economizou": "---" })
+    obj.push({ "mes":  mes, "economizou": 0 })
 
     return obj
 }
