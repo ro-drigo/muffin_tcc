@@ -81,12 +81,15 @@ module.exports = {
         try{
             const { id } = req.params
 
-            const result = await knex('pessoa').where('id_pes', id)
+            const resultPessoa = await knex('pessoa').where('id_pes', id)
+            const resultEndereco = await knex('endereco').where('cep_end', resultPessoa[0].cep_end)
+            const resultCidade = await knex('cidade').where('id_city', resultEndereco[0].id_city)
+
 
             //não mostrar a senha
-            result[0].pass_pes = undefined
+            resultPessoa[0].pass_pes = undefined
 
-            return res.json(result)
+            return res.json({resultPessoa, resultEndereco, resultCidade})
         }catch (error) {
             next(error)
         }
@@ -114,7 +117,7 @@ module.exports = {
             let vemail = await verificaEmail(email)
 
             if(vemail == true){
-                return res.send("Email já existe")
+                return res.status(202).send("Email já existe")
             }
                 
 
@@ -184,7 +187,8 @@ module.exports = {
                 estado,
                 numero,
                 bairro,
-                telefone
+                telefone,
+                cpf
 
             } = req.body
 
@@ -225,6 +229,7 @@ module.exports = {
             await knex('pessoa').update
                 ({ 
                     nome_pes: nome,
+                    cpf_pes: cpf,
                     date_nasc: datanasc,
                     email_pes: email,
                     cel_pes: celular,
@@ -262,18 +267,20 @@ module.exports = {
         const user = await knex('pessoa').where('email_pes', email).select('email_pes', 'pass_pes', 'id_pes')
 
         if(user.length == 0)
-            return res.status(400).send("usuário não existe")
+            return res.status(202).send("usuário não existe")
         
         //verificando se a senha bate
         if(!await bcrypt.compare(senha, user[0].pass_pes))
-            return res.status(400).send("senha inválida")
+            return res.status(202).send("senha inválida")
 
         //tirando para não exibir a senha
         user[0].pass_pes = undefined
 
         res.send({ 
-            user, 
-            token: generateToken({ id: user[0].id_pes }) 
+            //user, 
+            token: generateToken({ id: user[0].id_pes }),
+            id: user[0].id_pes,
+            status: 200
         })
     }
 }
