@@ -19,6 +19,150 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <title>Muffin</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        let nomeG;
+        let emailG;
+        let cpfG;
+        let senhaG;
+        let confirmaSenha;
+
+        async function saveGlobal(){
+          nomeG = document.getElementById('nameUser').value,
+          emailG = document.getElementById('emailUser').value,
+          cpfG = document.getElementById('cpfUser').value,
+          senhaG = document.getElementById('passUser').value,
+          confirmaSenha = document.getElementById('confPassUser').value
+
+
+        }
+
+        async function cadastro(){
+                const request = await axios.post('http://afe647498c07.ngrok.io/users',
+                 {                   
+                    "nome": nomeG,
+                    "cpf": cpfG,
+                    "cidade": cidadeG,
+                    "rua": lograG,
+                    "email": emailG,
+                    "cep": cepG,
+                    "estado": estadoG,
+                    "bairro": bairroG,
+                    "senha": senhaG
+               }).then((response) => {
+                    if(response.status == 200){
+                        alert("Usuário cadastrado!!!! >~<")
+                    }else{
+                        alert("Email já cadastrado no sistema.")
+                    }
+               })
+
+               
+        }                   
+            
+
+        let cepG;
+        let lograG;
+        let cidadeG;
+        let estadoG;
+        let bairroG;
+        async function pegaCEP(){
+            cepG = document.getElementById('cepUser').value,
+            lograG = document.getElementById('logUser').value,
+            cidadeG = document.getElementById('cityUser').value,
+            estadoG = document.getElementById('ufUser').value,
+            bairroG = document.getElementById('bairroUser').value
+
+            cadastro()
+        }
+
+        
+        async function logar(){
+            const request = await axios.post('http://afe647498c07.ngrok.io/authenticate',
+                {                                      
+                    "email": document.getElementById('nameLoginUser').value,
+                    "senha": document.getElementById('passLoginUser').value
+               }).then((response) => {
+                    if(response.status == 200){
+                        alert("Login realizado com sucesso!")
+
+                        sessionStorage.setItem('token', response.data.token);
+                        sessionStorage.setItem('id', response.data.id);
+                        window.location.href = "http://127.0.0.1:5500/HTML/profile.html";
+                    }else{
+                        alert("Falha no login.")
+                    }
+               })     
+        }       
+
+
+        function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('logUser').value=("");
+            document.getElementById('bairroUser').value=("");
+            document.getElementById('cityUser').value=("");
+            document.getElementById('ufUser').value=("");
+        }
+
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                //Atualiza os campos com os valores.
+                document.getElementById('logUser').value=(conteudo.logradouro);
+                document.getElementById('bairroUser').value=(conteudo.bairro);
+                document.getElementById('cityUser').value=(conteudo.localidade);
+                document.getElementById('ufUser').value=(conteudo.uf);
+            } //end if.
+            else {
+                //CEP não Encontrado.
+                limpa_formulário_cep();
+                alert("CEP não encontrado.");
+            }
+        }
+            
+        function pesquisacep(valor) {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if(validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    document.getElementById('logUser').value="...";
+                    document.getElementById('bairroUser').value="...";
+                    document.getElementById('cityUser').value="...";
+                    document.getElementById('ufUser').value="...";
+
+                    //Cria um elemento javascript.
+                    var script = document.createElement('script');
+
+                    //Sincroniza com o callback.
+                    script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                    //Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        };
+    </script>
 </head>
 <body>
         <div id="page-home"> 
@@ -30,15 +174,15 @@
                         <a href="#" class="linkLogin">Login</a>
                     </div>
         
-                    <form action="profile.html" class="info">
-                        <input type="text" placeholder="Nome de usuário ou E-mail" id="nameUser">
+                    <form class="info">
+                        <input type="text" placeholder="E-mail" id="nameLoginUser">
                         <br>
-                        <input type="password" placeholder="Senha" id="passUser">
+                        <input type="password" placeholder="Senha" id="passLoginUser">
                         <br>
                         <input type="checkbox" id="lembrar"><label for="lembrar">Manter conectado</label>
                         
                         <a href="#" class="forgotPassword">Esqueceu sua senha?</a>
-                        <input type="submit" value="ENTRAR" id="entrar">
+                        <input type="submit" value="ENTRAR" id="entrar" onclick="logar()">
                     </form>
                 </div>
             </div>
@@ -57,7 +201,8 @@
                         <input type="text" placeholder="Escreva seu CPF" id="cpfUser"><br>
                         <input type="password" placeholder="Digite uma senha" id="passUser"><br>
                         <input type="password" placeholder="Confirme sua senha" id="confPassUser"><br>
-                        <input type="submit" value="Continuar" id="inscrever">
+
+                        <input type="submit" value="Continuar" id="inscrever" onclick="saveGlobal()">
                     </form>
                 </div>
             </div>
@@ -71,12 +216,13 @@
                     </div>
         
                     <form action="#" class="info-register-two">
-                        <input type="text" placeholder="Digite seu CEP" id="cepUser" class="inputHundred"><br>
+                        <input type="text" placeholder="Digite seu CEP" id="cepUser" class="inputHundred" maxlength="9" onblur="pesquisacep(this.value);"><br>
                         <input type="text" placeholder="Logradouro" id="logUser" class="inputHundred" disabled><br>
                         <input type="text" placeholder="Cidade" id="cityUser" class="inputFifty" disabled>
-                        <input type="password" placeholder="Estado" id="ufUser" class="inputFifty" disabled><br>
-                        <input type="password" placeholder="Bairro" id="bairroUser" class="inputHundred" disabled><br>
-                        <input type="submit" value="Concluir" id="inscrever" class="inputHundred">
+                        <input type="text" placeholder="Estado" id="ufUser" class="inputFifty" disabled><br>
+                        <input type="text" placeholder="Bairro" id="bairroUser" class="inputHundred" disabled><br>
+                        
+                        <input type="submit" value="Concluir" id="inscreve" class="inputHundred" onclick="pegaCEP()">
                     </form>
                 </div>
             </div>

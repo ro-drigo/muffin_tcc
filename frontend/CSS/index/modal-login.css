@@ -67,15 +67,15 @@
     padding: 20px;
 }
 
-.info #nameUser{
+.info #nameLoginUser{
     margin-bottom: 15px;
 }
 
-.info #passUser{
+.info #passLoginUser{
     margin-bottom: 35px;
 }
 
-.info #nameUser, #passUser{
+.info #nameLoginUser, #passLoginUser{
     border: solid 1px;
     padding: 10px;
     width: 100%;

@@ -1,24 +1,24 @@
-form fieldset{
+fieldset{
     border: lightgrey 1px solid;
 }
 
-form fieldset legend h2{
+fieldset legend h2{
     color: rgb(158, 83, 228);
     font-weight: bold;
 }
 
-form .field-group{
+.field-group{
     display: flex;
     margin-bottom: 18px;
 }
 
-form .field-group .field{
+.field-group .field{
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
-form .field-group input{
+.field-group input{
     background-color: #F0F0F5;
     
     border: 0;
@@ -29,21 +29,21 @@ form .field-group input{
 
 }
 
-form .field-group .field .bloqueado{
+.field-group .field .bloqueado{
     background-color: #e1e1e4;
 }
 
-form label{
+label{
     font-size: 16px;
     margin-bottom: 5px;
     margin-left: 3px;
 }
 
-form .field-group .field + .field{
+.field-group .field + .field{
     margin-left: 20px;
 }
 
-form button{
+button{
     margin: 18px 0px 5px 2px;
     
     width: 180px;
@@ -57,11 +57,11 @@ form button{
     border: 0;
 }
 
-form button:hover{
+button:hover{
     background-color: rgb(87, 87, 233);
     transition: 700ms;
 }
-form .foto{
+.foto{
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -70,22 +70,22 @@ form .foto{
 
     margin-bottom: 30px;
 }
-form img{
+img{
     height: 160px;
     width: 200px;
 
     margin-bottom: 10px;
 }
 @media screen and (max-width: 600px){
-    form .field-group{
+    .field-group{
         display: inline;
     }
 
-    form .field-group .field + .field{
+    .field-group .field + .field{
         margin-left: 0px;
     }
 
-    form label{
+     label{
         margin-top: 20px;
         font-size: 14px;
     }

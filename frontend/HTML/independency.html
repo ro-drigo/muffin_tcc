@@ -13,6 +13,23 @@
 
 
     <title>Independência Financeira</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        async function requestPost(){
+          const request = await axios.post('http://afe647498c07.ngrok.io/independenciafinanceira',
+                 {
+                    receber: document.getElementById('receber-mes').value,
+                    investir: document.getElementById('investir-agora').value,
+                    inflacao: document.getElementById('inflacao').value
+                })
+                                            
+            var independenciaoutput = document.getElementById("resultadoINDEPENDENCIA");
+
+            independenciaoutput.innerHTML = request.data;
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -62,53 +79,31 @@
         </div>
 
         <div class="container">
-            <form action="">     
+                 
                 <h2>Independência Financeira</h2>           
                 <fieldset>  
                     <div class="field-group">
                         <div class="field">
-                            <label for="custo-mensal">Seu custo de vida mensal</label>
-                            <input type="number" name="custo-mensal">
-                        </div>
-                        <div class="field">
-                            <label for="rendimento">Rendimento médio das suas aplicações (anualmente)</label>
-                            <input type="number" name="rendimento">
+                            <label for="investir-agora">Quanto tem para investir agora?</label>
+                            <input type="number" name="investir-agora" id="investir-agora">
                         </div>
                     </div>
     
                     <div class="field-group">
                         <div class="field">
-                            <label for="investir-agora">Quanto tem para investir agora?</label>
-                            <input type="number" name="investir-agora">
+                            <label for="receber-mes">Quanto gostaria de receber todos os meses?</label>
+                            <input type="number" name="receber-mes" id="receber-mes">
                         </div>
                         <div class="field">
                             <label for="inflacao">Expectativa de inflação anual</label>
-                            <input type="number" name="inflacao">
+                            <input type="number" name="inflacao" id="inflacao">
                         </div>
-                    </div>
-
-                    <div class="field-group">
-                        <div class="field">
-                            <label for="receber-mes">Quanto gostaria de receber todos os meses?</label>
-                            <input type="number" name="receber-mes">
-                        </div>
-                        <div class="field">
-                            <label for="imposto">Imposto de renda sobre o investimento</label>
-                            <input type="number" name="imposto">
-                        </div>
-                    </div>
-
-                    <div class="field-group">
-                        <div class="field">
-                            <label for="parar-trabalhar">Em quanto tempo deseja parar de trabalhar?</label>
-                            <input type="number" name="parar-trabalhar">
-                        </div>
-                    </div>
+                    </div>      
                 </fieldset>
-                <button type="submit">Calcular</button>
-            </form>
+                <button type="submit" onclick="requestPost()">Calcular</button>
+            
 
-            <h3>Resultado:</h3>
+            <h3>Resultado: <span id="resultadoINDEPENDENCIA"></span></h3>
         </div>
     </main>
 </body>

@@ -4,7 +4,7 @@ main .texto{
     justify-content: center;
     
     height: 25vh;
-    background: linear-gradient(to right, rgb(130, 196, 218), lightblue, lightgreen);
+    background: linear-gradient(to right,  lightgreen, lightblue, rgb(130, 196, 218), lightblue, lightgreen);
     padding: 25px;
     color: white;
     pointer-events: none;

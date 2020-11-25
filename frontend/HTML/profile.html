@@ -16,6 +16,194 @@
     <link rel="stylesheet" href="../CSS/multi/titulo.css">
 
     <script src="../JS/profile/tabs.js" defer></script>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var token = sessionStorage.getItem('token');
+        var id = sessionStorage.getItem('id');
+        
+        async function pegarDados(){
+                const request = await axios.get(`http://afe647498c07.ngrok.io/users/${id}`)
+
+                inputNome = document.getElementById('nome_completo');
+                inputNome.value = request.data.resultPessoa[0].nome_pes;
+                
+                inputEmail = document.getElementById('email');
+                inputEmail.value = request.data.resultPessoa[0].email_pes;
+
+                inputCPF = document.getElementById('cpf');
+                inputCPF.value = request.data.resultPessoa[0].cpf_pes;
+
+                inputData = document.getElementById('data_nascimento');
+                let split = (request.data.resultPessoa[0].date_nasc).split('T');
+                inputData.value = split[0];
+                
+
+                inputCel = document.getElementById('celular');
+                inputCel.value = request.data.resultPessoa[0].cel_pes;
+
+                inputTel = document.getElementById('telefone');
+                inputTel.value = request.data.resultPessoa[0].tel_com;
+
+                inputCEP = document.getElementById('cep');
+                inputCEP.value = request.data.resultPessoa[0].cep_end;
+
+                inputPais = document.getElementById('pais');
+                inputPais.value = "Brasil";
+
+                imagem = document.getElementById('foto_perfil');
+                imagem.value = request.data.resultPessoa[0].foto_pes;
+
+                inputNumero = document.getElementById('numero');
+                inputNumero.value = request.data.resultPessoa[0].num_pes;
+
+                inputComple = document.getElementById('complemento');
+                inputComple.value = request.data.resultPessoa[0].comp_pes;
+
+                // inputEstado = document.getElementById('estado');
+                // inputEstado.value = request.data.resultCidade[0].id_uf;
+
+                // inputCidade = document.getElementById('cidade');
+                // inputCidade.value = request.data.resultCidade[0].nome_city;
+
+                // inputBairro = document.getElementById('bairro');
+                // inputBairro.value = request.data.resultEndereco[0].bairro_end;
+
+                // inputRua = document.getElementById('rua');
+                // inputRua.value = request.data.resultEndereco[0].lograd_end;
+
+                pesquisacep(document.getElementById('cep').value)
+
+        }
+
+        async function salvarDados(){
+            let a = document.getElementById('data_nascimento').value;
+
+            const request = await axios.put(`http://afe647498c07.ngrok.io/users/${id}`,
+                    {
+                        "nome": document.getElementById('nome_completo').value,
+                        "cpf": document.getElementById('cpf').value,
+                        "cidade": "Piracanjuba",
+                        "rua": "Rua do desgosto",
+                        "complemento": document.getElementById('complemento').value,
+                        "celular": document.getElementById('celular').value,
+                        "email": document.getElementById('email').value,
+                        "datanasc": document.getElementById('data_nascimento').value,
+                        "cep": document.getElementById('cep').value,
+                        "estado": "SC",
+                        "numero": document.getElementById('numero').value,
+                        "bairro": "Pq. Assunção",
+                        "telefone": document.getElementById('telefone').value
+                    }
+            )
+            console.log(a)
+            
+            pegarDados()
+        }
+
+
+         
+        async function salvarDadosFin(){
+            let gastos_totais = parseFloat(document.getElementById('aluguel').value) + parseFloat(document.getElementById('luz').value) 
+            + parseFloat(document.getElementById('agua').value) + parseFloat(document.getElementById('internet').value) 
+            + parseFloat(document.getElementById('adicional2').value) + parseFloat(document.getElementById('academia').value) 
+            + parseFloat(document.getElementById('estudos').value) + parseFloat(document.getElementById('men_celular').value)
+            + parseFloat(document.getElementById('alimentacao').value); 
+
+            let salario_total =  parseFloat(document.getElementById('salario').value) + parseFloat(document.getElementById('conjuge').value)
+            + parseFloat(document.getElementById('horas_extras').value) + parseFloat(document.getElementById('adicional').value);
+            
+            let reserva_total = parseFloat(document.getElementById('montante').value);
+            
+            let data = new Date();
+            let dataFormatada = data.getFullYear() + "-" + ((data.getMonth() + 1)) + "-" + ((data.getDate() ));
+
+            let renda = salario_total - gastos_totais;
+
+            let config = {headers: { 'Authorization': 'Bearer '+token}};
+            const request = await axios.post(`http://afe647498c07.ngrok.io/orc/${id}`,
+                    {       
+                        "salario": salario_total,
+                        "date_orc": dataFormatada,
+                        "renda_orc": renda,
+                        "gasto_total": gastos_totais,
+                        "reserva_mensal": reserva_total
+                    },
+                    config
+            )
+            
+        }
+       
+        function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('rua').value=("");
+            document.getElementById('bairro').value=("");
+            document.getElementById('cidade').value=("");
+            document.getElementById('estado').value=("");
+        }
+
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                //Atualiza os campos com os valores.
+                document.getElementById('rua').value=(conteudo.logradouro);
+                document.getElementById('bairro').value=(conteudo.bairro);
+                document.getElementById('cidade').value=(conteudo.localidade);
+                document.getElementById('estado').value=(conteudo.uf);
+            } //end if.
+            else {
+                //CEP não Encontrado.
+                limpa_formulário_cep();
+                alert("CEP não encontrado.");
+            }
+        }
+            
+        function pesquisacep(valor) {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if(validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    document.getElementById('rua').value="...";
+                    document.getElementById('bairro').value="...";
+                    document.getElementById('cidade').value="...";
+                    document.getElementById('estado').value="...";
+
+                    //Cria um elemento javascript.
+                    var script = document.createElement('script');
+
+                    //Sincroniza com o callback.
+                    script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                    //Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        };
+
+        pegarDados()
+
+
+    </script>
 </head>
 <body>
     <header>
@@ -72,9 +260,9 @@
     
             <div class="profile-tabs">
                 <div id="pessoais" data-tab-content class="active">
-                    <form action=""> 
+                    
                         <div class="foto">
-                            <img src="../IMAGENS/perfil-alterar.jpeg" alt="Falha em carregar imagem">
+                            <span id="foto_perfil"></span>
                             <input type="file" id="file" accept="image/*">
                             <label for="file">
                                 <span class="material-icons">
@@ -89,33 +277,33 @@
                             <div class="field-group">
                                 <div class="field">
                                     <label for="nome">Nome Completo</label>
-                                    <input type="text" name="nome">
+                                    <input type="text" name="nome" id="nome_completo">
                                 </div>
                                 <div class="field">
                                     <label for="email">Email</label>
-                                    <input type="text" name="email">
+                                    <input type="text" name="email" id="email">
                                 </div>
                             </div>
     
                             <div class="field-group">
                                 <div class="field">
                                     <label for="cpf">CPF</label>
-                                    <input type="text" name="cpf">
+                                    <input type="text" name="cpf" id="cpf">
                                 </div>
                                 <div class="field">
                                     <label for="nascimento">Data de Nascimento</label>
-                                    <input type="date" name="nascimento">
+                                    <input type="date" name="nascimento" id="data_nascimento">
                                 </div>
                             </div>
 
                             <div class="field-group">
                                 <div class="field">
                                     <label for="celular">Celular</label>
-                                    <input type="number" name="numero">
+                                    <input type="number" name="numero" id="celular">
                                 </div>
                                 <div class="field">
                                     <label for="telefone">Telefone Comercial</label>
-                                    <input type="number" name="telefone">
+                                    <input type="number" name="telefone" id="telefone">
                                 </div>
                             </div>
                         </fieldset>
@@ -125,79 +313,79 @@
                             <div class="field-group">
                                 <div class="field">
                                     <label for="cep">CEP</label>
-                                    <input type="text" name="cep">
+                                    <input type="text" name="cep" id="cep" maxlength="9" onblur="pesquisacep(this.value);">
                                 </div>
                                 <div class="field">
                                     <label for="pais">País de Residência</label>
-                                    <input type="text" name="pais" class="bloqueado" disabled>
+                                    <input type="text" name="pais" class="bloqueado" id="pais" disabled>
                                 </div>
                             </div>
     
                             <div class="field-group">
                                 <div class="field">
                                     <label for="estado">Estado</label>
-                                    <input type="text" name="estado" class="bloqueado" disabled>
+                                    <input type="text" name="estado" class="bloqueado" id="estado" disabled>
                                 </div>
                                 <div class="field">
                                     <label for="cidade">Cidade</label>
-                                    <input type="text" name="cidade" class="bloqueado" disabled>
+                                    <input type="text" name="cidade" class="bloqueado" id="cidade" disabled>
                                 </div>
                             </div>
     
                             <div class="field-group">
                                 <div class="field">
                                     <label for="bairro">Bairro</label>
-                                    <input type="text" name="bairro" class="bloqueado" disabled>
+                                    <input type="text" name="bairro" class="bloqueado" id="bairro" disabled>
                                 </div>
                                 <div class="field">
                                     <label for="conjuge">Rua</label>
-                                    <input type="text" name="conjuge" class="bloqueado" disabled>
+                                    <input type="text" name="conjuge" class="bloqueado" id="rua" disabled>
                                 </div>
                             </div>
     
                             <div class="field-group">
                                 <div class="field">
                                     <label for="numero">Número</label>
-                                    <input type="number" name="numero">
+                                    <input type="number" name="numero" id="numero">
                                 </div>
                                 <div class="field">
                                     <label for="complemento">Complemento</label>
-                                    <input type="text" name="complemento">
+                                    <input type="text" name="complemento" id="complemento">
                                 </div>
                             </div>
                         </fieldset>
                             
                         
 
-                        <button type="submit">Salvar</button>
-                    </form>
+                        <button type="submit" onclick="salvarDados()">Salvar</button>
+                    
                 </div>
     
 
                 <div id="financeiros" data-tab-content>
-                    <form action="">
+                    
                         <fieldset>
                             <legend><h2>Receita</h2></legend>
 
                             <div class="field-group">
                                 <div class="field">
                                     <label for="salario">Salário</label>
-                                    <input type="text" name="salario">
+                                    <input type="text" name="salario" id="salario">
                                 </div>
                                 <div class="field">
                                     <label for="conjuge">Salário Cônjuge</label>
-                                    <input type="text" name="conjuge">
+                                    <input type="text" name="conjuge" id="conjuge">
                                 </div>
                             </div>
 
                             <div class="field-group">
                                 <div class="field">
                                     <label for="horas-extras">Horas Extras</label>
-                                    <input type="text" name="horas-extras">
+                                    <input type="text" name="horas-extras" id="horas_extras">
                                 </div>
                                 <div class="field">
                                     <label for="adicional">Adicional</label>
-                                    <input type="text" name="adicional" placeholder="Adicionar mais rendas">
+                                    <input type="text" name="adicional" placeholder="Adicionar mais rendas" id="adicional">
                                 </div>
                             </div>
                         </fieldset>
@@ -208,28 +396,28 @@
                             <div class="field-group">
                                 <div class="field">
                                     <label for="aluguel">Aluguel</label>
-                                    <input type="text" name="aluguel">
+                                    <input type="text" name="aluguel" id="aluguel">
                                 </div>
                                 <div class="field">
                                     <label for="luz">Luz</label>
-                                    <input type="text" name="luz">
+                                    <input type="text" name="luz" id="luz">
                                 </div>
                             </div>
 
                             <div class="field-group">
                                 <div class="field">
                                     <label for="agua">Água</label>
-                                    <input type="text" name="agua">
+                                    <input type="text" name="agua" id="agua">
                                 </div>
                                 <div class="field">
                                     <label for="internet">Internet</label>
-                                    <input type="text" name="internet">
+                                    <input type="text" name="internet" id="internet">
                                 </div>
                             </div>
                             <div class="field-group">
                                 <div class="field">
                                     <label for="adicional2">Adicional</label>
-                                    <input type="text" name="adicional2" placeholder="Adicionar mais despesas">
+                                    <input type="text" name="adicional2" placeholder="Adicionar mais despesas" id="adicional2">
                                 </div>
                             </div>
                         </fieldset>
@@ -240,22 +428,22 @@
                             <div class="field-group">
                                 <div class="field">
                                     <label for="academia">Academia</label>
-                                    <input type="text" name="academia">
+                                    <input type="text" name="academia" id="academia">
                                 </div>
                                 <div class="field">
                                     <label for="estudos">Estudos</label>
-                                    <input type="text" name="estudos">
+                                    <input type="text" name="estudos" id="estudos">
                                 </div>
                             </div>
 
                             <div class="field-group">
                                 <div class="field">
                                     <label for="celular">Celular (Mensalidade)</label>
-                                    <input type="text" name="celular">
+                                    <input type="text" name="celular" id="men_celular">
                                 </div>
                                 <div class="field">
                                     <label for="alimentacao">Alimentação (gastos extras)</label>
-                                    <input type="text" name="alimentacao">
+                                    <input type="text" name="alimentacao" id="alimentacao">
                                 </div>
                             </div>
                         </fieldset>
@@ -266,39 +454,39 @@
                             <div class="field-group">
                                 <div class="field">
                                     <label for="investido">Montante Investido</label>
-                                    <input type="text" name="investido">
+                                    <input type="text" name="investido" id="montante">
                                 </div>
                                 <div class="field">
                                     <label for="sobra">Sobra mensal</label>
-                                    <input type="text" name="sobra">
+                                    <input type="text" name="sobra" id="sobra">
                                 </div>
                             </div>
 
                             <div class="field-group">
                                 <div class="field">
                                     <label for="longo-prazo">Investimentos a Longo Prazo</label>
-                                    <input type="text" name="longo-prazo">
+                                    <input type="text" name="longo-prazo" id="longo_prazo">
                                 </div>
                                 <div class="field">
                                     <label for="sobra-porcentagem">Sobra Mensal (Em Porcentagem)</label>
-                                    <input type="text" name="sobra-porcentagem">
+                                    <input type="text" name="sobra-porcentagem" id="sobra_porcentagem">
                                 </div>
                             </div>
 
                             <div class="field-group">
                                 <div class="field">
                                     <label for="curto-prazo">Investimentos a Curto e Médio Prazo</label>
-                                    <input type="text" name="curto-prazo">
+                                    <input type="text" name="curto-prazo" id="curto_prazo">
                                 </div>
                                 <div class="field">
                                     <label for="emergencia">Quanto falta para a reserva de emergência</label>
-                                    <input type="text" name="emergencia">
+                                    <input type="text" name="emergencia" id="emergencia">
                                 </div>
                             </div>
                         </fieldset>
 
-                        <button type="submit">Salvar</button>
-                    </form>
+                        <button type="submit" onclick="salvarDadosFin()">Salvar</button>
+                    
                 </div>
             </div>
         </div>

@@ -19,14 +19,17 @@
 
     <script>
         async function requestPost(){
-          const request = await axios.post('http://localhost:3001/juroscompostos',
-                                            {
-                                                investimento: document.getElementById('valor-agora').value,
-                                                aplicacao: document.getElementById('aplicacao').value,
-                                                tempo: document.getElementById('tempo').value,
-                                                rentabilidade: document.getElementById('rentabilidade').value
-                                            })
-          console.log(request.data)
+          const request = await axios.post('http://84dcf4f0cfda.ngrok.io/juroscompostos',
+                 {
+                    investimento: document.getElementById('valor-agora').value,
+                    aplicacao: document.getElementById('aplicacao').value,
+                    tempo: document.getElementById('tempo').value,
+                    rentabilidade: document.getElementById('rentabilidade').value
+                })
+                                            
+            var jurosoutput = document.getElementById("resultadoJUROS");
+
+            jurosoutput.innerHTML = request.data;
         }
     </script>
 </head>
@@ -78,6 +81,7 @@
         </div>
 
         <div class="container">
+            
                 <h2>Juros Compostos</h2>           
                 <fieldset>  
                     <div class="field-group">
@@ -93,7 +97,7 @@
     
                     <div class="field-group">
                         <div class="field">
-                            <label for="tempo">Por quanto tempo?</label>
+                            <label for="tempo">Por quanto tempo? (meses)</label>
                             <input type="number" name="tempo" id="tempo">
                         </div>
                         <div class="field">
@@ -104,7 +108,8 @@
                 </fieldset>
                 <button type="submit" onclick="requestPost()">Calcular</button>
 
-            <h3>Resultado:</h3>
+            <h3>Resultado: <span id="resultadoJUROS"></span></h3>
+        
         </div>
     </main>
 </body>

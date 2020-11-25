@@ -1,9 +1,9 @@
-form fieldset{
+ fieldset{
     border: lightgrey 1px solid;
     padding: 10px;
 }
 
-form h2{
+ h2{
     width: 100%;
    
     color: rgb(158, 83, 228);
@@ -14,18 +14,18 @@ form h2{
     margin-bottom: 20px;
 }
 
-form .field-group{
+ .field-group{
     display: flex;
     margin-bottom: 18px;
 }
 
-form .field-group .field{
+ .field-group .field{
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
-form .field-group input{
+ .field-group input{
     background-color: #F0F0F5;
     
     border: 0;
@@ -36,17 +36,17 @@ form .field-group input{
 
 }
 
-form label{
+ label{
     font-size: 16px;
     margin-bottom: 5px;
     margin-left: 3px;
 }
 
-form .field-group .field + .field{
+ .field-group .field + .field{
     margin-left: 20px;
 }
 
-form button{
+ button{
     margin: 18px 0px 5px 2px;
     
     width: 180px;
@@ -60,11 +60,11 @@ form button{
     border: 0;
 }
 
-form button:hover{
+ button:hover{
     background-color: rgb(87, 87, 233);
     transition: 700ms;
 }
-form .foto{
+ .foto{
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -73,42 +73,42 @@ form .foto{
 
     margin-bottom: 30px;
 }
-form img{
+ img{
     height: 160px;
     width: 200px;
 
     margin-bottom: 10px;
 }
 @media screen and (max-width: 750px){
-    form .field-group{
+     .field-group{
         display: inline;
     }
 
-    form .field-group .field + .field{
+     .field-group .field + .field{
         margin-left: 0px;
     }
 
-    form label{
+     label{
         margin-top: 20px;
         font-size: 16px;
     }
 }
 
 @media screen and (max-width: 400px){
-    form .field-group{
+     .field-group{
         display: inline;
     }
 
-    form .field-group .field + .field{
+     .field-group .field + .field{
         margin-left: 0px;
     }
 
-    form label{
+     label{
         margin-top: 20px;
         font-size: 16px;
     }
 
-    form h2{
+     h2{
         font-size: 30px;
     }
 }

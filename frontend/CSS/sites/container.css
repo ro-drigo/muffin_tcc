@@ -62,15 +62,15 @@ main .container .content .image{
 }
 
 main .container .content:nth-child(1) .image{
-    background-image: url(../../IMAGENS/perfil-link.jpeg);
+    background-image: url(../../IMAGENS/SiteInfo.png);
 }
 
 main .container .content:nth-child(2) .image{
-    background-image: url(../../IMAGENS/perfil-link.jpeg);
+    background-image: url(../../IMAGENS/SiteRico.png);
 }
 
 main .container .content:nth-child(3) .image{
-    background-image: url(../../IMAGENS/perfil-link.jpeg);
+    background-image: url(../../IMAGENS/SiteValor2.png);
 }
 
 main .container .content:nth-child(4) .image{

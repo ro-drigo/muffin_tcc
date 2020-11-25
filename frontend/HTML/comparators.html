@@ -23,37 +23,80 @@
     <script type="text/javascript">
 
       // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
+      
+    </script>
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+    <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
 
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
+    <script>
+        async function requestPost(){
+        const request = await axios.post('http://914bcd2b2269.ngrok.io/comparador',
+                {
+                    tempo: document.getElementById('yearsSlider').value,
+                    investimento: document.getElementById('moneySlider').value
+                })
+                                            
+            var poupancaoutput = document.getElementById("valorPoupanca");
+            var prefixadooutput = document.getElementById("valorPrefixado");
+            var ipcaumoutput = document.getElementById("valor2035");
+            var ipcadoisoutput = document.getElementById("valor2045");
 
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Resultados');
-        data.addRows([
-          ['Poupança', 12642.94],
-          ['Tesouro IPCA+ 2045', 11806.73],
-          ['Tesouro IPCA+ 2035', 11926.60],
-          ['Tesouro Prefixado 2026', 12127.88],
+            var guarda = request.data.Valor_poupança.toString();
+            var alteraPonto = guarda.replace(".", ",");   
+                   
+            var guardaPre = request.data.Valor_tesouro_prefixado_2026.toString();
+            var alteraPrefixado = guardaPre.replace(".", ",");
 
-        ]);
+            var guarda2035 = request.data.Valor_tesouro_ipca_2035.toString();
+            var altera2035 = guarda2035.replace(".", ",");
 
-        // Set chart options
-        var options = {
-            
+            var guarda2045 = request.data.Valor_tesouro_ipca_2045.toString();
+            var altera2045 = guarda2045.replace(".", ",");
+
+            poupancaoutput.innerHTML = alteraPonto;
+            prefixadooutput.innerHTML = alteraPrefixado;
+            ipcaumoutput.innerHTML = altera2035;
+            ipcadoisoutput.innerHTML = altera2045;
+
+            graficopoupanca = request.data.Valor_poupança;
+            graficoprefixado = request.data.Valor_tesouro_prefixado_2026;
+            grafico2035 = request.data.Valor_tesouro_ipca_2035;
+            grafico2045 = request.data.Valor_tesouro_ipca_2045;
+
+            google.charts.load('current', {'packages':['corechart']});
+
+            // Set a callback to run when the Google Visualization API is loaded.
+            google.charts.setOnLoadCallback(drawChart);
+
+            // Callback that creates and populates a data table,
+            // instantiates the pie chart, passes in the data and
+            // draws it.
+            function drawChart() {
+
+                // Create the data table.
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Topping');
+                data.addColumn('number', 'Resultados');
+                data.addRows([
+                ['Poupança', graficopoupanca],
+                ['Tesouro IPCA+ 2045', grafico2045],
+                ['Tesouro IPCA+ 2035', grafico2035],
+                ['Tesouro Prefixado 2026', graficoprefixado],
+
+                ]);
+
+                // Set chart options
+                var options = {
+                    
+                }
+                                                    
+                // Instantiate and draw our chart, passing in some options.
+                    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div')); 
+                    chart.draw(data, options); 
+            }
         }
-                                              
-        // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div')); 
-            chart.draw(data, options); 
-      }
+
+        
     </script>
 
     <title>Muffin</title>
@@ -107,9 +150,9 @@
         </div>
 
         <div class="container">
-            <form action="">   
+               
                 <h2>Comparadores</h2>                           
-            </form>
+            
 
             <div class="sliderField">
                 <div class="sliderContainer">
@@ -129,21 +172,23 @@
 
             <div class="resultadosDiv espacamento">
                 <div class="resultadoIndividual">
-                    <p>Poupança: <span></span></p>
+                    <p>Poupança: R$ <span id="valorPoupanca"></span></p>
                 </div>
                 <div class="resultadoIndividual">
-                    <p>Tesouro IPCA+ 2045: <span></span></p>
+                    <p>Tesouro IPCA+ 2045: R$ <span id="valor2045"></span></p>
                 </div>
             </div>
             <div class="resultadosDiv">
                 <div class="resultadoIndividual">
-                    <p>Tesouro IPCA+ 2035: <span></span></p>
+                    <p>Tesouro IPCA+ 2035: R$ <span id="valor2035"></span></p>
                 </div>
                 <div class="resultadoIndividual">
-                    <p>Tesouro Prefixado 2026: <span></span></p>
+                    <p>Tesouro Prefixado 2026: R$ <span id="valorPrefixado"></span></p>
                 </div>
             </div>
             
+
+            <button type="submit" onclick="requestPost()">Calcular</button>
             
             <div class="bottom-image">
                 <img src="../IMAGENS/cofrinho.jpeg" alt="Não foi possível carregar a imagem">
